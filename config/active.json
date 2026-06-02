@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "enabled": true,
+  "dryRun": false,
+  "notificationEmail": "sharankasandula@gmail.com",
+  "campaignName": "Sthira Search - Core",
+  "dailyBudgetTargetInr": 180,
+  "monitoring": {
+    "lookbackDays": 7,
+    "dailySummaryTopRows": 10,
+    "includeSearchTerms": true,
+    "includeKeywords": true
+  },
+  "thresholds": {
+    "maxAvgCpcInr": 60,
+    "minClicksBeforeAutoPause": 3,
+    "lowCtrThreshold": 0.01,
+    "minImpressionsForCtrAlert": 100,
+    "costPerLeadAlertInr": 500,
+    "dailySpendAlertMultiplier": 1.5
+  },
+  "automation": {
+    "autoPauseHighCpcKeywords": true,
+    "autoAlertLowCtrKeywords": true,
+    "autoAddSafeNegativeTerms": true,
+    "negativeMatchType": "PHRASE"
+  },
+  "safeNegativeTerms": [
+    "exercise at home",
+    "exercises at home",
+    "course",
+    "jobs",
+    "salary",
+    "free",
+    "youtube",
+    "pdf",
+    "meaning",
+    "definition",
+    "wikipedia",
+    "equipment",
+    "buy",
+    "amazon"
+  ],
+  "watchOnlyTerms": [
+    "home physiotherapy",
+    "pregnancy physiotherapy",
+    "frozen shoulder",
+    "knee pain"
+  ],
+  "approvalRequiredFor": [
+    "budget_increase",
+    "new_positive_keywords",
+    "ad_copy_changes",
+    "landing_page_changes",
+    "bid_strategy_changes",
+    "geo_expansion",
+    "new_campaigns"
+  ]
+}
+
+

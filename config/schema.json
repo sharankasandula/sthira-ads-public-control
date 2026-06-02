@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sthira Ads Control Config",
+  "type": "object",
+  "required": [
+    "version",
+    "enabled",
+    "dryRun",
+    "notificationEmail",
+    "campaignName",
+    "dailyBudgetTargetInr",
+    "monitoring",
+    "thresholds",
+    "automation",
+    "safeNegativeTerms"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "enabled": { "type": "boolean" },
+    "dryRun": { "type": "boolean" },
+    "notificationEmail": { "type": "string", "format": "email" },
+    "campaignName": { "type": "string", "minLength": 1 },
+    "dailyBudgetTargetInr": { "type": "number", "minimum": 1, "maximum": 300 },
+    "monitoring": {
+      "type": "object",
+      "required": ["lookbackDays", "dailySummaryTopRows", "includeSearchTerms", "includeKeywords"],
+      "additionalProperties": false,
+      "properties": {
+        "lookbackDays": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "dailySummaryTopRows": { "type": "integer", "minimum": 1, "maximum": 25 },
+        "includeSearchTerms": { "type": "boolean" },
+        "includeKeywords": { "type": "boolean" }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "maxAvgCpcInr",
+        "minClicksBeforeAutoPause",
+        "lowCtrThreshold",
+        "minImpressionsForCtrAlert",
+        "costPerLeadAlertInr",
+        "dailySpendAlertMultiplier"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "maxAvgCpcInr": { "type": "number", "minimum": 1, "maximum": 80 },
+        "minClicksBeforeAutoPause": { "type": "integer", "minimum": 3, "maximum": 20 },
+        "lowCtrThreshold": { "type": "number", "minimum": 0.001, "maximum": 0.1 },
+        "minImpressionsForCtrAlert": { "type": "integer", "minimum": 20, "maximum": 1000 },
+        "costPerLeadAlertInr": { "type": "number", "minimum": 1, "maximum": 5000 },
+        "dailySpendAlertMultiplier": { "type": "number", "minimum": 1, "maximum": 3 }
+      }
+    },
+    "automation": {
+      "type": "object",
+      "required": [
+        "autoPauseHighCpcKeywords",
+        "autoAlertLowCtrKeywords",
+        "autoAddSafeNegativeTerms",
+        "negativeMatchType"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "autoPauseHighCpcKeywords": { "type": "boolean" },
+        "autoAlertLowCtrKeywords": { "type": "boolean" },
+        "autoAddSafeNegativeTerms": { "type": "boolean" },
+        "negativeMatchType": { "enum": ["PHRASE", "EXACT"] }
+      }
+    },
+    "safeNegativeTerms": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 2, "maxLength": 80 },
+      "uniqueItems": true,
+      "maxItems": 200
+    },
+    "watchOnlyTerms": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 2, "maxLength": 80 },
+      "uniqueItems": true,
+      "maxItems": 100
+    },
+    "approvalRequiredFor": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 2, "maxLength": 80 },
+      "uniqueItems": true
+    }
+  }
+}
+
+
