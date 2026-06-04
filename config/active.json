@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "enabled": true,
   "dryRun": false,
   "notificationEmail": "sharankasandula@gmail.com",
@@ -48,7 +48,17 @@
     "home physiotherapy",
     "pregnancy physiotherapy",
     "frozen shoulder",
-    "knee pain"
+    "knee pain",
+    "diastasis recti",
+    "tkr rehab",
+    "total knee replacement",
+    "knee replacement",
+    "post operative rehab",
+    "post surgery physiotherapy",
+    "pelvic floor physiotherapy",
+    "postnatal physiotherapy",
+    "acl physiotherapy",
+    "stroke rehabilitation"
   ],
   "approvalRequiredFor": [
     "budget_increase",
@@ -58,7 +68,133 @@
     "bid_strategy_changes",
     "geo_expansion",
     "new_campaigns"
+  ],
+  "positiveKeywordCandidates": [
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "EXACT",
+      "keyword": "knee replacement physiotherapy near me",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent TKR/knee replacement rehab search"
+    },
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "EXACT",
+      "keyword": "tkr rehab hyderabad",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent TKR rehab search"
+    },
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "PHRASE",
+      "keyword": "total knee replacement physiotherapy",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent post-surgery rehab search"
+    },
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "EXACT",
+      "keyword": "post surgery physiotherapy hyderabad",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent post-op rehab search"
+    },
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "PHRASE",
+      "keyword": "post operative rehab near me",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent post-op rehab search"
+    },
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "PHRASE",
+      "keyword": "post operative physiotherapy hyderabad",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent post-op physio search"
+    },
+    {
+      "adGroup": "AG4 - Post-Surgery Rehab",
+      "matchType": "PHRASE",
+      "keyword": "knee replacement recovery hyderabad",
+      "landingPageHint": "/services/post-surgical-rehabilitation",
+      "note": "High-intent knee replacement recovery search"
+    },
+    {
+      "adGroup": "AG5 - Womens Health Physio",
+      "matchType": "EXACT",
+      "keyword": "diastasis recti physiotherapy hyderabad",
+      "landingPageHint": "/services/womens-health",
+      "note": "High-intent postpartum rehab search"
+    },
+    {
+      "adGroup": "AG5 - Womens Health Physio",
+      "matchType": "PHRASE",
+      "keyword": "diastasis recti treatment near me",
+      "landingPageHint": "/services/womens-health",
+      "note": "High-intent postpartum rehab search"
+    },
+    {
+      "adGroup": "AG5 - Womens Health Physio",
+      "matchType": "EXACT",
+      "keyword": "postnatal physiotherapy hyderabad",
+      "landingPageHint": "/services/womens-health",
+      "note": "High-intent postnatal physio search"
+    },
+    {
+      "adGroup": "AG5 - Womens Health Physio",
+      "matchType": "EXACT",
+      "keyword": "pelvic floor physiotherapy hyderabad",
+      "landingPageHint": "/services/womens-health",
+      "note": "High-intent women’s health physio search"
+    },
+    {
+      "adGroup": "AG5 - Womens Health Physio",
+      "matchType": "PHRASE",
+      "keyword": "female physiotherapist near me",
+      "landingPageHint": "/services/womens-health",
+      "note": "Relevant for women preferring female PT"
+    },
+    {
+      "adGroup": "AG2 - Back & Neck Pain",
+      "matchType": "PHRASE",
+      "keyword": "frozen shoulder physiotherapy",
+      "landingPageHint": "/services/pain-management",
+      "note": "Condition-specific physio search"
+    },
+    {
+      "adGroup": "AG2 - Back & Neck Pain",
+      "matchType": "PHRASE",
+      "keyword": "back pain physiotherapy near me",
+      "landingPageHint": "/services/pain-management",
+      "note": "Condition-specific pain rehab search"
+    },
+    {
+      "adGroup": "AG2 - Back & Neck Pain",
+      "matchType": "PHRASE",
+      "keyword": "neck pain physiotherapy near me",
+      "landingPageHint": "/services/pain-management",
+      "note": "Condition-specific pain rehab search"
+    },
+    {
+      "adGroup": "AG2 - Back & Neck Pain",
+      "matchType": "EXACT",
+      "keyword": "knee pain physiotherapy hyderabad",
+      "landingPageHint": "/services/pain-management",
+      "note": "Condition-specific knee pain rehab search"
+    },
+    {
+      "adGroup": "AG3 - Sports Injury Rehab",
+      "matchType": "PHRASE",
+      "keyword": "acl physiotherapy hyderabad",
+      "landingPageHint": "/services/sports-injury-recovery",
+      "note": "High-intent sports/ortho rehab search"
+    },
+    {
+      "adGroup": "AG6 - Elderly / Neuro Rehab",
+      "matchType": "PHRASE",
+      "keyword": "stroke rehabilitation physiotherapy hyderabad",
+      "landingPageHint": "/services/geriatric-physiotherapy",
+      "note": "High-intent neuro/geriatric rehab search"
+    }
   ]
 }
-
-
