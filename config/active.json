@@ -58,7 +58,11 @@
     "pelvic floor physiotherapy",
     "postnatal physiotherapy",
     "acl physiotherapy",
-    "stroke rehabilitation"
+    "stroke rehabilitation",
+    "chiropractor",
+    "needle therapy",
+    "ift physiotherapy",
+    "pediatric physiotherapist"
   ],
   "approvalRequiredFor": [
     "budget_increase",
