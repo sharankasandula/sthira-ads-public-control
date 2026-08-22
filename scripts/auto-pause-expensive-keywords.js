@@ -301,11 +301,12 @@ function sendDailyReport(config, date) {
     date,
     date,
   )
-  MailApp.sendEmail(
-    config.notificationEmail,
-    'Sthira Ads nightly — ' + date,
-    buildDailyEmail(date, calls, metrics.cost),
-  )
+  MailApp.sendEmail({
+    to: config.notificationEmail,
+    subject: 'Sthira Ads nightly — ' + date,
+    body: buildDailyEmail(date, calls, metrics.cost),
+    htmlBody: buildDailyHtmlEmail(date, calls, metrics.cost),
+  })
   Logger.log('Nightly report emailed for ' + date)
 }
 
@@ -325,10 +326,10 @@ function sendWeeklyReport(config, now, props) {
     return date >= startDate && date <= endDate
   })
 
-  MailApp.sendEmail(
-    config.notificationEmail,
-    'Sthira Ads weekly — ' + startDate + ' to ' + endDate,
-    buildWeeklyEmail(
+  MailApp.sendEmail({
+    to: config.notificationEmail,
+    subject: 'Sthira Ads weekly — ' + startDate + ' to ' + endDate,
+    body: buildWeeklyEmail(
       startDate,
       endDate,
       calls,
@@ -337,7 +338,16 @@ function sendWeeklyReport(config, now, props) {
       config.reporting.optimizationScoreFloor,
       corrections,
     ),
-  )
+    htmlBody: buildWeeklyHtmlEmail(
+      startDate,
+      endDate,
+      calls,
+      metrics.cost,
+      score,
+      config.reporting.optimizationScoreFloor,
+      corrections,
+    ),
+  })
   Logger.log('Weekly report emailed for ' + startDate + ' to ' + endDate)
 }
 
@@ -441,6 +451,128 @@ function buildWeeklyEmail(startDate, endDate, calls, spend, score, scoreFloor, c
   return lines.join('\n')
 }
 
+function buildDailyHtmlEmail(date, calls, spend) {
+  return buildEmailShell(
+    'Daily snapshot',
+    formatHumanDate(date),
+    buildMetricsTable([
+      { label: 'CALLS FROM ADS', value: formatCallCount(calls), colour: '#0f766e' },
+      { label: 'SPEND', value: '₹' + Number(spend || 0).toFixed(0), colour: '#1f2937' },
+    ]),
+    '<div style="margin-top:18px;color:#6b7280;font-size:12px;line-height:18px">' +
+      'Calls are Ads-attributed Google Maps call-button clicks, not confirmed answered calls.' +
+      '</div>',
+  )
+}
+
+function buildWeeklyHtmlEmail(startDate, endDate, calls, spend, score, scoreFloor, corrections) {
+  var scoreText = 'Unavailable'
+  var scoreColour = '#6b7280'
+  if (score && score.ok) {
+    scoreText = (score.score * 100).toFixed(1) + '%'
+    scoreColour = score.score < scoreFloor ? '#b91c1c' : '#0f766e'
+  }
+
+  var correctionItems = ''
+  for (var i = 0; i < corrections.length; i++) {
+    var item = corrections[i]
+    var text = ''
+    if (item.type === 'negative_added') {
+      text = 'Added ' + (item.matchType || 'PHRASE') + ' negative: ' + item.value
+    } else if (item.type === 'keyword_paused') {
+      text = 'Paused keyword: ' + item.value + (item.reason ? ' — ' + item.reason : '')
+    }
+    if (text) {
+      correctionItems +=
+        '<li style="margin:0 0 8px;color:#374151;font-size:13px;line-height:19px">' +
+        escapeHtml(text) +
+        '</li>'
+    }
+  }
+
+  var correctionBody = corrections.length
+    ? '<ol style="margin:10px 0 0;padding-left:20px">' + correctionItems + '</ol>'
+    : '<div style="margin-top:8px;color:#6b7280;font-size:13px">No corrections were needed.</div>'
+
+  var details =
+    '<div style="margin-top:20px;padding:16px;background:#f9fafb;border-radius:10px">' +
+    '<div style="color:#111827;font-size:14px;font-weight:700">Corrections made · ' +
+    corrections.length +
+    '</div>' +
+    correctionBody +
+    '</div>' +
+    '<div style="margin-top:16px;color:#6b7280;font-size:12px;line-height:18px">' +
+    'Calls are Ads-attributed Google Maps call-button clicks, not confirmed answered calls.' +
+    '</div>'
+
+  return buildEmailShell(
+    'Weekly summary',
+    formatHumanDate(startDate) + ' – ' + formatHumanDate(endDate),
+    buildMetricsTable([
+      { label: 'CALLS FROM ADS', value: formatCallCount(calls), colour: '#0f766e' },
+      { label: 'SPEND', value: '₹' + Number(spend || 0).toFixed(0), colour: '#1f2937' },
+      { label: 'OPTIMISATION', value: scoreText, colour: scoreColour },
+    ]),
+    details,
+  )
+}
+
+function buildEmailShell(title, period, metrics, details) {
+  return (
+    '<div style="margin:0;padding:24px;background:#f3f4f6;font-family:Arial,sans-serif">' +
+    '<div style="max-width:560px;margin:0 auto;padding:24px;background:#ffffff;border:1px solid #e5e7eb;border-radius:14px">' +
+    '<div style="color:#0f766e;font-size:11px;font-weight:700;letter-spacing:1.2px">STHIRA ADS</div>' +
+    '<div style="margin-top:6px;color:#111827;font-size:22px;font-weight:700;line-height:28px">' +
+    escapeHtml(title) +
+    '</div>' +
+    '<div style="margin-top:3px;color:#6b7280;font-size:13px">' +
+    escapeHtml(period) +
+    '</div>' +
+    metrics +
+    details +
+    '</div></div>'
+  )
+}
+
+function buildMetricsTable(metrics) {
+  var cells = ''
+  for (var i = 0; i < metrics.length; i++) {
+    if (i) cells += '<td style="width:8px"></td>'
+    cells +=
+      '<td style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;vertical-align:top">' +
+      '<div style="color:#6b7280;font-size:10px;font-weight:700;letter-spacing:.5px">' +
+      escapeHtml(metrics[i].label) +
+      '</div>' +
+      '<div style="margin-top:6px;color:' +
+      metrics[i].colour +
+      ';font-size:24px;font-weight:700;line-height:28px">' +
+      escapeHtml(metrics[i].value) +
+      '</div></td>'
+  }
+  return (
+    '<table role="presentation" style="width:100%;margin-top:20px;border-collapse:separate;border-spacing:0"><tr>' +
+    cells +
+    '</tr></table>'
+  )
+}
+
+function formatHumanDate(value) {
+  var parts = String(value).split('-')
+  if (parts.length !== 3) return String(value)
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  var month = months[Number(parts[1]) - 1]
+  return month ? Number(parts[2]) + ' ' + month + ' ' + parts[0] : String(value)
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function formatCallCount(result) {
   if (!result || !result.ok) return 'unavailable'
   var count = Number(result.count || 0)
@@ -500,7 +632,9 @@ function escapeGaqlString(value) {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     buildDailyEmail: buildDailyEmail,
+    buildDailyHtmlEmail: buildDailyHtmlEmail,
     buildWeeklyEmail: buildWeeklyEmail,
+    buildWeeklyHtmlEmail: buildWeeklyHtmlEmail,
     formatCallCount: formatCallCount,
     isReportDue: isReportDue,
   }

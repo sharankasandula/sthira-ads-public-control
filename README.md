@@ -19,7 +19,7 @@ Rules:
 - `scripts/auto-pause-expensive-keywords.js` runs hourly. It keeps approved keyword
   guardrails active, records corrections, and never sends per-run email. After 22:00 IST it sends
   one short call-click/spend email; Saturday's email is the weekly call-click/spend/optimisation-
-  score/corrections summary.
+  score/corrections summary. Both use compact, mobile-friendly HTML with a plain-text fallback.
 - `scripts/daily-performance-summary.js` runs once each morning and posts the privacy-safe
   structured report to the private receiver. It is receiver-only and does not email.
 - The primary call metric is the Google Ads conversion action named `Clicks to call`. It is an

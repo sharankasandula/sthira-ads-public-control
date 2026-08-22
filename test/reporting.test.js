@@ -3,7 +3,9 @@ const assert = require('node:assert/strict')
 
 const {
   buildDailyEmail,
+  buildDailyHtmlEmail,
   buildWeeklyEmail,
+  buildWeeklyHtmlEmail,
   formatCallCount,
   isReportDue,
 } = require('../scripts/auto-pause-expensive-keywords.js')
@@ -16,6 +18,15 @@ test('daily email contains only the requested call-click and spend summary', () 
   assert.match(body, /Maps call clicks from Google Ads: 3/)
   assert.match(body, /Spend: ₹187/)
   assert.doesNotMatch(body, /CTR|keyword|impressions|guardrail/i)
+})
+
+test('daily HTML email is compact and scannable', () => {
+  const html = buildDailyHtmlEmail('2026-08-23', { ok: true, count: 4 }, 192.4)
+  assert.match(html, /Daily snapshot/)
+  assert.match(html, /23 Aug 2026/)
+  assert.match(html, /CALLS FROM ADS[\s\S]*>4</)
+  assert.match(html, /SPEND[\s\S]*>₹192</)
+  assert.ok(html.length < 6000)
 })
 
 test('weekly email includes score and every correction', () => {
@@ -37,6 +48,24 @@ test('weekly email includes score and every correction', () => {
   assert.match(body, /Corrections made: 2/)
   assert.match(body, /Added PHRASE negative: free/)
   assert.match(body, /Paused keyword: example — high CPC/)
+})
+
+test('weekly HTML email highlights score and safely lists corrections', () => {
+  const html = buildWeeklyHtmlEmail(
+    '2026-08-17',
+    '2026-08-23',
+    { ok: true, count: 9 },
+    1210.8,
+    { ok: true, score: 0.884 },
+    0.9,
+    [{ type: 'negative_added', matchType: 'PHRASE', value: '<competitor>' }],
+  )
+  assert.match(html, /Weekly summary/)
+  assert.match(html, /OPTIMISATION[\s\S]*88\.4%/)
+  assert.match(html, /Corrections made · 1/)
+  assert.match(html, /&lt;competitor&gt;/)
+  assert.doesNotMatch(html, /<competitor>/)
+  assert.ok(html.length < 9000)
 })
 
 test('failed call query is never reported as zero calls', () => {
