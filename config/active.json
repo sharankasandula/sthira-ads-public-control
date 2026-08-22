@@ -20,7 +20,7 @@
     "dailySpendAlertMultiplier": 1.5
   },
   "automation": {
-    "autoPauseHighCpcKeywords": true,
+    "autoPauseHighCpcKeywords": false,
     "autoAlertLowCtrKeywords": true,
     "autoAddSafeNegativeTerms": true,
     "negativeMatchType": "PHRASE"
