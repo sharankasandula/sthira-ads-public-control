@@ -22,6 +22,9 @@ Rules:
   score/corrections summary. Both use compact, mobile-friendly HTML with a plain-text fallback.
 - `scripts/daily-performance-summary.js` runs once each morning and posts the privacy-safe
   structured report to the private receiver. It is receiver-only and does not email.
+- `receiver/server.py` is the deployable receiver source. Its authenticated call-candidate endpoint
+  gives the clinic app timestamps, duration and received/missed state for local matching while
+  rejecting caller phone numbers.
 - The primary call metric is the Google Ads conversion action named `Clicks to call`. It is an
   Ads-attributed Maps call-button click, not proof of an answered or qualified clinic call.
 
