@@ -9,6 +9,7 @@
     "notificationEmail",
     "campaignName",
     "dailyBudgetTargetInr",
+    "reporting",
     "monitoring",
     "thresholds",
     "automation",
@@ -38,6 +39,38 @@
       "type": "number",
       "minimum": 1,
       "maximum": 300
+    },
+    "reporting": {
+      "type": "object",
+      "required": [
+        "dailyEmailHourIst",
+        "weeklyEmailDayIso",
+        "callConversionActionName",
+        "optimizationScoreFloor"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "dailyEmailHourIst": {
+          "type": "integer",
+          "minimum": 18,
+          "maximum": 23
+        },
+        "weeklyEmailDayIso": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+        },
+        "callConversionActionName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "optimizationScoreFloor": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
     },
     "monitoring": {
       "type": "object",
