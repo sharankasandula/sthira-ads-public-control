@@ -1,9 +1,9 @@
 {
   "version": 2,
   "enabled": true,
-  "dryRun": false,
+  "dryRun": true,
   "notificationEmail": "sharankasandula@gmail.com",
-  "campaignName": "Sthira Search - Core",
+  "campaignName": "Whatsapp Leads -1",
   "dailyBudgetTargetInr": 180,
   "monitoring": {
     "lookbackDays": 7,
