@@ -1,5 +1,5 @@
 /**
- * Sthira PhysioCenter — keyword guardrails and scheduled reports v3.
+ * Sthira PhysioCenter — keyword guardrails and scheduled reports v4.
  *
  * Runs hourly. Keyword corrections are silent and accumulated for the Saturday report.
  * After the configured night hour, one email is sent per day. Saturday receives one combined
@@ -11,11 +11,14 @@ var CONFIG_URL =
 
 var HARD_RAILS = {
   expectedCampaignName: 'Whatsapp Leads -1',
+  expectedCustomerId: '5458767317',
+  expectedCampaignId: 24073581572,
   maxBudgetTargetInr: 300,
   maxAvgCpcInr: 80,
   minClicksBeforePauseFloor: 3,
   maxKeywordPausesPerRun: 3,
   maxNegativeAddsPerRun: 5,
+  maxNegativeAddsPerDay: 10,
   protectedTerms: ['sthira', 'sthirra', 'jahnavi', 'jahnavi kasandula'],
 }
 
@@ -23,57 +26,86 @@ var STATE_KEYS = {
   corrections: 'STHIRA_ADS_CORRECTIONS_V1',
   lastReportDate: 'STHIRA_ADS_LAST_REPORT_DATE_V1',
   lastConfigIssueDate: 'STHIRA_ADS_LAST_CONFIG_ISSUE_DATE_V1',
+  lastScan: 'STHIRA_ADS_LAST_SCAN_V4',
+  lastRuntimeIssueDate: 'STHIRA_ADS_LAST_RUNTIME_ISSUE_DATE_V4',
 }
 
 function main() {
   var now = new Date()
-  var loaded = loadAndValidateConfig()
-  if (!loaded.ok) {
-    Logger.log('Guardrail config issue; no changes made: ' + loaded.error)
-    maybeSendConfigIssue(loaded.error, now)
-    return
+  var preview = AdsApp.getExecutionInfo().isPreview()
+  try {
+    assertAccountIdentity(AdsApp.currentAccount().getCustomerId())
+    var loaded = loadAndValidateConfig()
+    if (!loaded.ok) throw new Error(loaded.error)
+    var config = loaded.config
+    if (!config.enabled) {
+      Logger.log('Automation disabled by config')
+      return
+    }
+    if (config.automation.autoPauseHighCpcKeywords) {
+      throw new Error('Keyword pausing is not authorized in this executor')
+    }
+    assertFreshReview(config, now)
+    var campaign = getTargetCampaign()
+    var startDate = getDateString(new Date(now.getTime() - config.monitoring.lookbackDays * 86400000))
+    var endDate = getDateString(now)
+    var negativeAdds = []
+    var observations = []
+    var scan = { scanned: 0, proposed: 0, added: 0 }
+    if (config.automation.autoAddSafeNegativeTerms) {
+      scan = inspectSearchTermsForNegatives(config, startDate, endDate, negativeAdds, observations, campaign, preview)
+    }
+    if (!config.dryRun && !preview) {
+      PropertiesService.getScriptProperties().setProperty(STATE_KEYS.lastScan,
+        JSON.stringify({ at: now.toISOString(), version: 4, scanned: scan.scanned, added: scan.added }))
+    }
+    Logger.log('STHIRA_GUARDRAIL_V4 ' + JSON.stringify({
+      campaignId: HARD_RAILS.expectedCampaignId, scanned: scan.scanned,
+      proposed: scan.proposed, added: scan.added, preview: preview, dryRun: config.dryRun,
+      reviewedAt: config.negativeReview.reviewedAt,
+    }))
+    if (!preview && !config.dryRun) maybeSendScheduledReport(config, now)
+  } catch (error) {
+    var message = error && error.message ? error.message : String(error)
+    Logger.log('STHIRA_GUARDRAIL_V4_FAILED ' + message)
+    if (!preview) notifyRuntimeFailure(message, now)
+    throw error
   }
+}
 
-  var config = loaded.config
-  if (!config.enabled) {
-    Logger.log('Automation disabled by config')
-    return
+function assertAccountIdentity(customerId) {
+  if (String(customerId).replace(/-/g, '') !== HARD_RAILS.expectedCustomerId) {
+    throw new Error('Unexpected advertiser account; no changes made')
   }
+}
 
-  var startDate = getDateString(
-    new Date(now.getTime() - config.monitoring.lookbackDays * 24 * 60 * 60 * 1000),
-  )
-  var endDate = getDateString(now)
-  var paused = []
-  var negativeAdds = []
-  var observations = []
-
-  if (
-    config.automation.autoPauseHighCpcKeywords ||
-    config.automation.autoAlertLowCtrKeywords
-  ) {
-    inspectKeywords(config, startDate, endDate, paused, observations)
+function getTargetCampaign() {
+  var it = AdsApp.campaigns().withIds([HARD_RAILS.expectedCampaignId]).get()
+  if (!it.hasNext()) throw new Error('Expected campaign ID missing')
+  var campaign = it.next()
+  if (campaign.getName() !== HARD_RAILS.expectedCampaignName || !campaign.isEnabled()) {
+    throw new Error('Campaign name/status mismatch; no changes made')
   }
-  if (config.automation.autoAddSafeNegativeTerms) {
-    inspectSearchTermsForNegatives(config, startDate, endDate, negativeAdds, observations)
+  return campaign
+}
+
+function assertFreshReview(config, now) {
+  var review = config.negativeReview || {}
+  var reviewedAt = Date.parse(review.reviewedAt)
+  var age = now.getTime() - reviewedAt
+  if (review.owner !== 'spandana' || !isFinite(reviewedAt) || age < -300000 || age > 72 * 3600000) {
+    throw new Error('Spandana search-quality review missing/stale (72h); negative additions frozen')
   }
+}
 
-  if (!config.dryRun && (paused.length || negativeAdds.length)) {
-    recordCorrections(paused, negativeAdds, now)
-  }
-
-  Logger.log(
-    'Guardrail run complete; paused=' +
-      paused.length +
-      '; negatives=' +
-      negativeAdds.length +
-      '; observations=' +
-      observations.length +
-      '; dryRun=' +
-      config.dryRun,
-  )
-
-  maybeSendScheduledReport(config, now)
+function notifyRuntimeFailure(message, now) {
+  var props = PropertiesService.getScriptProperties()
+  var date = getDateString(now)
+  if (props.getProperty(STATE_KEYS.lastRuntimeIssueDate) === date) return
+  MailApp.sendEmail('sharankasandula@gmail.com', 'Sthira Ads automation needs attention',
+    'Hourly negative-keyword automation failed. No further changes will be made in this run. ' +
+    'Previously saved exclusions remain active.\n\n' + message)
+  props.setProperty(STATE_KEYS.lastRuntimeIssueDate, date)
 }
 
 function loadAndValidateConfig() {
@@ -110,104 +142,65 @@ function loadAndValidateConfig() {
   }
 }
 
-function inspectKeywords(config, startDate, endDate, paused, observations) {
-  var it = AdsApp.keywords()
-    .withCondition('Status = ENABLED')
-    .withCondition('CampaignStatus = ENABLED')
-    .withCondition('AdGroupStatus = ENABLED')
-    .withCondition('CampaignName = "' + escapeAwql(config.campaignName) + '"')
-    .forDateRange(compactDate(startDate), compactDate(endDate))
-    .get()
-
-  while (it.hasNext()) {
-    var keyword = it.next()
-    var stats = keyword.getStatsFor(compactDate(startDate), compactDate(endDate))
-    var clicks = stats.getClicks()
-    var impressions = stats.getImpressions()
-    var cost = stats.getCost()
-    var conversions = stats.getConversions()
-    var avgCpc = clicks > 0 ? cost / clicks : 0
-    var ctr = impressions > 0 ? clicks / impressions : 0
-    var text = keyword.getText()
-
-    if (
-      config.automation.autoPauseHighCpcKeywords &&
-      paused.length < HARD_RAILS.maxKeywordPausesPerRun &&
-      clicks >= config.thresholds.minClicksBeforeAutoPause &&
-      avgCpc > config.thresholds.maxAvgCpcInr &&
-      conversions === 0 &&
-      !isProtectedKeyword(text)
-    ) {
-      var reason =
-        'CPC ₹' +
-        avgCpc.toFixed(2) +
-        ' > ₹' +
-        config.thresholds.maxAvgCpcInr +
-        ' (' +
-        clicks +
-        ' clicks, ₹' +
-        cost.toFixed(0) +
-        ', 0 conv)'
-      if (!config.dryRun) keyword.pause()
-      paused.push({ keyword: text, reason: reason })
-      continue
-    }
-
-    if (
-      config.automation.autoAlertLowCtrKeywords &&
-      impressions >= config.thresholds.minImpressionsForCtrAlert &&
-      ctr < config.thresholds.lowCtrThreshold
-    ) {
-      observations.push(
-        'Low CTR: ' +
-          text +
-          ' ' +
-          (ctr * 100).toFixed(2) +
-          '% (' +
-          impressions +
-          ' impressions)',
-      )
-    }
-  }
-}
-
-function inspectSearchTermsForNegatives(
-  config,
-  startDate,
-  endDate,
-  negativeAdds,
-  observations,
-) {
+function inspectSearchTermsForNegatives(config, startDate, endDate, negativeAdds, observations, campaign, preview) {
+  campaign = campaign || getTargetCampaign()
   var rules = compileSafeNegativeRules(config)
-  if (!rules.length) return
-
   var existing = getExistingCampaignNegatives(config.campaignName)
-  var report = AdsApp.report(buildSearchTermReportQuery(config.campaignName, startDate, endDate))
-  var rows = report.rows()
-  var campaignIt = AdsApp.campaigns()
-    .withCondition('Name = "' + escapeAwql(config.campaignName) + '"')
-    .get()
-  if (!campaignIt.hasNext()) {
-    observations.push('Campaign not found for negative-keyword scan')
-    return
-  }
-  var campaign = campaignIt.next()
-
-  while (rows.hasNext() && negativeAdds.length < HARD_RAILS.maxNegativeAddsPerRun) {
+  var protectedQueries = (config.watchOnlyTerms || []).concat(HARD_RAILS.protectedTerms)
+  var positives = campaign.keywords().withCondition('Status = ENABLED').get()
+  while (positives.hasNext()) protectedQueries.push(stripMatchSyntax(positives.next().getText()))
+  rules = rules.filter(function(rule) {
+    return !protectedQueries.some(function(text) { return queryMatchesRule(text, rule) })
+  })
+  var rows = AdsApp.report(buildSearchTermReportQuery(config.campaignName, startDate, endDate)).rows()
+  var scan = { scanned: 0, proposed: 0, added: 0 }
+  var today = getDateString(new Date())
+  var addedToday = readCorrections(PropertiesService.getScriptProperties()).filter(function(item) {
+    return item.type === 'negative_added' && item.at && item.at.slice(0, 10) === today
+  }).length
+  var runLimit = Math.min(HARD_RAILS.maxNegativeAddsPerRun, Math.max(0, HARD_RAILS.maxNegativeAddsPerDay - addedToday))
+  while (rows.hasNext()) {
     var row = rows.next()
+    scan.scanned++
     var query = normalizeNegativeText(row.Query || '')
+    if (!query || isProtectedQuery(query, config)) continue
     for (var i = 0; i < rules.length; i++) {
       var rule = rules[i]
-      var key = negativeRuleKey(rule)
-      if (!existing[key] && queryMatchesRule(query, rule) && isSafeNegativeRule(rule)) {
-        var negativeText = buildNegativeText(rule)
-        if (!config.dryRun) campaign.createNegativeKeyword(negativeText)
-        existing[key] = true
-        negativeAdds.push({ term: rule.term, matchType: rule.matchType })
-        break
+      if (isCoveredByNegatives(rule, existing) || !queryMatchesRule(query, rule)) continue
+      if (scan.proposed >= runLimit) break
+      scan.proposed++
+      if (!config.dryRun && !preview) {
+        campaign.createNegativeKeyword(buildNegativeText(rule))
+        var readback = getExistingCampaignNegatives(config.campaignName)
+        if (!isCoveredByNegatives(rule, readback)) throw new Error('Negative addition could not be verified')
+        scan.added++
+        recordCorrections([], [{ term: rule.term, matchType: rule.matchType }], new Date())
       }
+      existing.push(rule)
+      negativeAdds.push({ term: rule.term, matchType: rule.matchType })
+      break
     }
   }
+  return scan
+}
+
+function isProtectedQuery(query, config) {
+  if (isProtectedKeyword(query)) return true
+  return (config.watchOnlyTerms || []).some(function(term) {
+    return queryMatchesRule(query, { term: term, matchType: 'PHRASE' })
+  })
+}
+
+function isCoveredByNegatives(rule, negatives) {
+  return negatives.some(function(existing) {
+    if (existing.matchType === 'BROAD') {
+      return normalizeNegativeText(existing.term).split(' ').every(function(word) {
+        return (' ' + rule.term + ' ').indexOf(' ' + word + ' ') >= 0
+      })
+    }
+    if (existing.matchType === 'EXACT') return negativeRuleKey(rule) === negativeRuleKey(existing)
+    return queryMatchesRule(rule.term, existing)
+  })
 }
 
 function buildSearchTermReportQuery(campaignName, startDate, endDate) {
@@ -215,6 +208,7 @@ function buildSearchTermReportQuery(campaignName, startDate, endDate) {
     'SELECT CampaignName, Query, Impressions, Clicks, Cost, Conversions ' +
     'FROM SEARCH_QUERY_PERFORMANCE_REPORT ' +
     'WHERE CampaignStatus = ENABLED ' +
+    'AND CampaignId = ' + HARD_RAILS.expectedCampaignId + ' ' +
     'AND CampaignName = "' +
     escapeAwql(campaignName) +
     '" DURING ' +
@@ -259,6 +253,8 @@ function normalizeNegativeRule(rule) {
   if (!isSafeNegativeTerm(term)) return null
   var matchType = String(rule.matchType || 'PHRASE').toUpperCase()
   if (['PHRASE', 'EXACT'].indexOf(matchType) < 0) return null
+  if (/[\[\]\"<>]/.test(term)) throw new Error('Negative rule must contain plain keyword text')
+  if (['physiotherapy', 'physiotherapist', 'hospital', 'clinic', 'rehab', 'rehabilitation', 'pain', 'near me', 'home visit'].indexOf(term) >= 0) throw new Error('Generic clinical negative is prohibited')
   return { term: term, matchType: matchType, source: rule.source || 'legacy' }
 }
 
@@ -276,7 +272,7 @@ function buildNegativeText(rule) {
 function normalizeNegativeText(value) {
   return String(value || '')
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
+    .normalize('NFC')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -289,18 +285,17 @@ function isSafeNegativeRule(rule) {
   return rule && isSafeNegativeTerm(rule.term)
 }
 
+function stripMatchSyntax(text) {
+  return String(text).replace(/^\[/, '').replace(/\]$/, '').replace(/^"/, '').replace(/"$/, '')
+}
+
 function getExistingCampaignNegatives(campaignName) {
-  var found = {}
-  var it = AdsApp.campaigns()
-    .withCondition('Name = "' + escapeAwql(campaignName) + '"')
-    .get()
-  if (!it.hasNext()) return found
-  var negatives = it.next().negativeKeywords().get()
+  if (campaignName !== HARD_RAILS.expectedCampaignName) throw new Error('Unexpected campaign name')
+  var found = []
+  var negatives = getTargetCampaign().negativeKeywords().get()
   while (negatives.hasNext()) {
     var keyword = negatives.next()
-    var text = String(keyword.getText())
-    var matchType = text.indexOf('[') === 0 ? 'EXACT' : 'PHRASE'
-    found[matchType + '|' + normalizeNegativeText(text)] = true
+    found.push({ term: normalizeNegativeText(stripMatchSyntax(keyword.getText())), matchType: keyword.getMatchType() })
   }
   return found
 }
@@ -710,5 +705,10 @@ if (typeof module !== 'undefined' && module.exports) {
     queryMatchesRule: queryMatchesRule,
     buildNegativeText: buildNegativeText,
     normalizeNegativeRule: normalizeNegativeRule,
+    main: main,
+    assertFreshReview: assertFreshReview,
+    assertAccountIdentity: assertAccountIdentity,
+    isProtectedQuery: isProtectedQuery,
+    isCoveredByNegatives: isCoveredByNegatives,
   }
 }

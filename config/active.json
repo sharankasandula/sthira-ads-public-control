@@ -32,8 +32,6 @@
     "negativeMatchType": "PHRASE"
   },
   "safeNegativeTerms": [
-    "exercise at home",
-    "exercises at home",
     "course",
     "jobs",
     "salary",
@@ -156,6 +154,56 @@
       "term": "nursing location",
       "matchType": "EXACT",
       "note": "Navigation-only string"
+    },
+    {
+      "term": "star hospital",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "wellness hospital",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "nims hospital",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "sayani surgicals",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "nature cure hospital",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "arogya hospital",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "tx hospital",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "empower physiotherapy clinic",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "physiotherapy machine",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "physiotherapy shop",
+      "matchType": "PHRASE",
+      "note": "Verified search-quality cleanup 2026-09-05"
     }
   ],
   "watchOnlyTerms": [
@@ -314,5 +362,9 @@
       "landingPageHint": "/services/geriatric-physiotherapy",
       "note": "High-intent neuro/geriatric rehab search"
     }
-  ]
+  ],
+  "negativeReview": {
+    "reviewedAt": "2026-09-04T20:00:00Z",
+    "owner": "spandana"
+  }
 }

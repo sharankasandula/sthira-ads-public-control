@@ -30,3 +30,27 @@ Rules:
 
 Tokens remain only in the live Google Ads script and server secret storage. The checked-in
 receiver script intentionally contains a placeholder.
+
+## Search-quality owner and executor (v4)
+
+Spandana owns fresh search-term review; the existing hourly Google Ads script is the only Ads
+writer. Append audited `safeNegativeRules` using EXACT for full unrelated queries by default;
+PHRASE rules require a specific, justified irrelevant intent. Never publish raw search reports,
+patient data, secrets or ambiguous clinical exclusions. Preserve the rest of the config.
+
+After a successful live read and review, update `negativeReview.reviewedAt` to its UTC ISO time
+and keep `negativeReview.owner` as `spandana`, including when no new rules qualify. Never refresh
+that timestamp from cached, failed or partial source reads. The executor freezes new additions and
+alerts the existing owner email when this review is more than 72 hours old or a runtime query fails.
+Its diagnostics are `STHIRA_GUARDRAIL_V4` / `STHIRA_GUARDRAIL_V4_FAILED` in Google Ads run logs.
+
+The executor hard-checks advertiser 5458767317 and campaign 24073581572 and its enabled name,
+blocks brand/watch-only/positive-keyword conflicts, retains Unicode, checks existing match types,
+and verifies each addition. Limits: five additions per run and ten per day. Keyword pauses are
+prohibited. Preview/dry runs do not write negatives, correction history, success timestamps or
+emails. A successful live scan stores `STHIRA_ADS_LAST_SCAN_V4` in script properties; this local
+state is not independently accessible to the reviewer without the Google Ads editor.
+
+Rollback: set `automation.autoAddSafeNegativeTerms` false to stop new exclusions (or `enabled`
+false for the whole script). Existing negatives stay in Google Ads; remove only individually
+reviewed incorrect exclusions. Keep the last known good source revision before editor replacement.

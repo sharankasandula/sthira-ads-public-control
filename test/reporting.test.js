@@ -129,3 +129,11 @@ test('search-term report query stays isolated to the configured campaign', () =>
   assert.match(query, /DURING 20260901,20260904/)
   assert.doesNotMatch(query, /Sthira Search - Core/)
 })
+
+
+test('receiver script accepts only the current campaign', () => {
+  const valid = { campaignName: 'Whatsapp Leads -1', notificationEmail: 'sharankasandula@gmail.com',
+    dailyBudgetTargetInr: 180, monitoring: {}, thresholds: { maxAvgCpcInr: 60 } }
+  assert.doesNotThrow(() => validateConfigForReporting(valid))
+  assert.throws(() => validateConfigForReporting({ ...valid, campaignName: 'Sthira Search - Core' }), /invalid campaignName/)
+})

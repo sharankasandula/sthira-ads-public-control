@@ -273,6 +273,23 @@
       },
       "uniqueItems": true,
       "maxItems": 100
+    },
+    "negativeReview": {
+      "type": "object",
+      "required": [
+        "reviewedAt",
+        "owner"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "reviewedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "owner": {
+          "const": "spandana"
+        }
+      }
     }
   }
 }
