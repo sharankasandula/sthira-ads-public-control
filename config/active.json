@@ -204,6 +204,26 @@
       "term": "physiotherapy shop",
       "matchType": "PHRASE",
       "note": "Verified search-quality cleanup 2026-09-05"
+    },
+    {
+      "term": "bone setting near me",
+      "matchType": "EXACT",
+      "note": "Fresh live search term review 2026-09-04/05"
+    },
+    {
+      "term": "dr kk physio care hyderabad",
+      "matchType": "EXACT",
+      "note": "Fresh live search term review 2026-09-04/05"
+    },
+    {
+      "term": "nexus pain management center hyderabad",
+      "matchType": "EXACT",
+      "note": "Fresh live search term review 2026-09-04/05"
+    },
+    {
+      "term": "rebound rehabilitation physical therapy",
+      "matchType": "EXACT",
+      "note": "Fresh live search term review 2026-09-04/05"
     }
   ],
   "watchOnlyTerms": [
@@ -364,7 +384,7 @@
     }
   ],
   "negativeReview": {
-    "reviewedAt": "2026-09-04T20:00:00Z",
+    "reviewedAt": "2026-09-04T21:07:58Z",
     "owner": "spandana"
   }
 }
