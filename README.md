@@ -51,6 +51,18 @@ prohibited. Preview/dry runs do not write negatives, correction history, success
 emails. A successful live scan stores `STHIRA_ADS_LAST_SCAN_V4` in script properties; this local
 state is not independently accessible to the reviewer without the Google Ads editor.
 
+The Spandana cron must attach `sthira_search_quality_preflight.py`, copied from
+`scripts/search-quality-preflight.py` into its profile scripts directory. This uses the existing
+Bitwarden-backed authentication wrapper, consumes every available API row for seven completed
+days plus the current-day partial, and writes a private snapshot outside the repo. Any failed
+fetch deletes the preceding proof. Raw query telemetry must never be committed or sent in alerts.
+
+Spandana's checkout uses `scripts/validate-review-commit.py` as its pre-commit gate. It rejects
+changed config without a complete live snapshot less than one hour old, requires `reviewedAt`
+to equal that snapshot's `fetchedAt`, and checks scope, observed queries, and retained protections.
+Do not bypass the hook or edit the evidence file. Missing data is a failure, never a reason to
+refresh the review timestamp. A heartbeat-only successful review should return `[SILENT]`.
+
 Rollback: set `automation.autoAddSafeNegativeTerms` false to stop new exclusions (or `enabled`
 false for the whole script). Existing negatives stay in Google Ads; remove only individually
 reviewed incorrect exclusions. Keep the last known good source revision before editor replacement.

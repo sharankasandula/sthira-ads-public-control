@@ -2,7 +2,7 @@
   "name": "sthira-ads-public-control",
   "private": true,
   "scripts": {
-    "test": "node --test && PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s receiver -p 'test_*.py'",
+    "test": "node --test && PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s receiver -p 'test_*.py' && PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s test -p '*_test.py'",
     "verify": "npm test && node -e \"JSON.parse(require('fs').readFileSync('config/active.json')); JSON.parse(require('fs').readFileSync('config/schema.json'))\""
   }
 }
