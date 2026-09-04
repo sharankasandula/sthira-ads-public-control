@@ -206,24 +206,19 @@
       "note": "Verified search-quality cleanup 2026-09-05"
     },
     {
-      "term": "bone setting near me",
-      "matchType": "EXACT",
-      "note": "Fresh live search term review 2026-09-04/05"
-    },
-    {
       "term": "dr kk physio care hyderabad",
       "matchType": "EXACT",
-      "note": "Fresh live search term review 2026-09-04/05"
+      "note": "Exact other-provider navigation query; retain generic physiotherapy searches."
     },
     {
       "term": "nexus pain management center hyderabad",
       "matchType": "EXACT",
-      "note": "Fresh live search term review 2026-09-04/05"
+      "note": "Exact named other-provider query; retain generic pain-management searches."
     },
     {
       "term": "rebound rehabilitation physical therapy",
       "matchType": "EXACT",
-      "note": "Fresh live search term review 2026-09-04/05"
+      "note": "Exact named Rebound Rehabilitation provider query; official reboundrehab.com lists Florida locations."
     }
   ],
   "watchOnlyTerms": [
@@ -244,7 +239,8 @@
     "chiropractor",
     "needle therapy",
     "ift physiotherapy",
-    "pediatric physiotherapist"
+    "pediatric physiotherapist",
+    "bone setting"
   ],
   "approvalRequiredFor": [
     "budget_increase",
