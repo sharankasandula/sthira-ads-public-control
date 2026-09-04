@@ -81,6 +81,83 @@
     "care n cure physiotherapy",
     "care n cure"
   ],
+  "safeNegativeRules": [
+    {
+      "term": "maps google",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "google map location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "maps my location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "live location map",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "maps location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "current location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "maps hyderabad",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "google map location now",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "google maps location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "google location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "google maps",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "open google maps",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "near gym",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "cult beeramguda",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    },
+    {
+      "term": "nursing location",
+      "matchType": "EXACT",
+      "note": "Navigation-only string"
+    }
+  ],
   "watchOnlyTerms": [
     "home physiotherapy",
     "pregnancy physiotherapy",

@@ -181,6 +181,36 @@
       "uniqueItems": true,
       "maxItems": 200
     },
+    "safeNegativeRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "term",
+          "matchType"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "term": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
+          },
+          "matchType": {
+            "enum": [
+              "PHRASE",
+              "EXACT"
+            ]
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 160
+          }
+        }
+      },
+      "uniqueItems": true,
+      "maxItems": 200
+    },
     "watchOnlyTerms": {
       "type": "array",
       "items": {

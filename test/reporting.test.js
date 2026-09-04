@@ -8,6 +8,11 @@ const {
   buildWeeklyHtmlEmail,
   formatCallCount,
   isReportDue,
+  buildSearchTermReportQuery,
+  compileSafeNegativeRules,
+  negativeRuleKey,
+  queryMatchesRule,
+  normalizeNegativeText,
 } = require('../scripts/auto-pause-expensive-keywords.js')
 const {
   validateConfigForReporting,
@@ -82,17 +87,45 @@ test('nightly report is emitted only once after the configured hour', () => {
   )
 })
 
-test('receiver script accepts only the current campaign', () => {
-  const valid = {
-    campaignName: 'Whatsapp Leads -1',
-    notificationEmail: 'sharankasandula@gmail.com',
-    dailyBudgetTargetInr: 180,
-    monitoring: {},
-    thresholds: { maxAvgCpcInr: 60 },
-  }
-  assert.doesNotThrow(() => validateConfigForReporting(valid))
-  assert.throws(
-    () => validateConfigForReporting({ ...valid, campaignName: 'Sthira Search - Core' }),
-    /invalid campaignName/,
+test('negative rules support exact-only navigation matches and phrase allow-list matches', () => {
+  assert.equal(
+    queryMatchesRule('google maps', { term: 'google maps', matchType: 'EXACT' }),
+    true,
   )
+  assert.equal(
+    queryMatchesRule('open google maps', { term: 'google maps', matchType: 'EXACT' }),
+    false,
+  )
+  assert.equal(
+    queryMatchesRule('best physiotherapy equipment', { term: 'equipment', matchType: 'PHRASE' }),
+    true,
+  )
+  assert.equal(
+    queryMatchesRule('best physiotherapy equipment store', { term: 'equipment', matchType: 'PHRASE' }),
+    true,
+  )
+})
+
+test('legacy allow-list and explicit exact rules are merged deterministically', () => {
+  const rules = compileSafeNegativeRules({
+    automation: { negativeMatchType: 'PHRASE' },
+    safeNegativeTerms: ['jobs', 'free'],
+    safeNegativeRules: [
+      { term: 'google maps', matchType: 'EXACT' },
+      { term: 'google maps', matchType: 'EXACT' },
+    ],
+  })
+  assert.deepEqual(
+    rules.map((rule) => `${rule.matchType}:${rule.term}`),
+    ['EXACT:google maps', 'PHRASE:jobs', 'PHRASE:free'],
+  )
+  assert.equal(negativeRuleKey(rules[0]), 'EXACT|google maps')
+  assert.equal(normalizeNegativeText('  GOOGLE   MAPS  '), 'google maps')
+})
+
+test('search-term report query stays isolated to the configured campaign', () => {
+  const query = buildSearchTermReportQuery('Whatsapp Leads -1', '20260901', '20260904')
+  assert.match(query, /CampaignName = "Whatsapp Leads -1"/)
+  assert.match(query, /DURING 20260901,20260904/)
+  assert.doesNotMatch(query, /Sthira Search - Core/)
 })

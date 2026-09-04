@@ -178,21 +178,11 @@ function inspectSearchTermsForNegatives(
   negativeAdds,
   observations,
 ) {
-  var safeTerms = config.safeNegativeTerms || []
-  if (!safeTerms.length) return
+  var rules = compileSafeNegativeRules(config)
+  if (!rules.length) return
 
   var existing = getExistingCampaignNegatives(config.campaignName)
-  var report = AdsApp.report(
-    'SELECT CampaignName, Query, Impressions, Clicks, Cost, Conversions ' +
-      'FROM SEARCH_QUERY_PERFORMANCE_REPORT ' +
-      'WHERE CampaignStatus = ENABLED ' +
-      'AND CampaignName = "' +
-      escapeAwql(config.campaignName) +
-      '" DURING ' +
-      compactDate(startDate) +
-      ',' +
-      compactDate(endDate),
-  )
+  var report = AdsApp.report(buildSearchTermReportQuery(config.campaignName, startDate, endDate))
   var rows = report.rows()
   var campaignIt = AdsApp.campaigns()
     .withCondition('Name = "' + escapeAwql(config.campaignName) + '"')
@@ -205,19 +195,98 @@ function inspectSearchTermsForNegatives(
 
   while (rows.hasNext() && negativeAdds.length < HARD_RAILS.maxNegativeAddsPerRun) {
     var row = rows.next()
-    var query = String(row.Query || '').toLowerCase()
-    for (var i = 0; i < safeTerms.length; i++) {
-      var term = String(safeTerms[i]).toLowerCase()
-      if (query.indexOf(term) >= 0 && isSafeNegativeTerm(term) && !existing[term]) {
-        var negativeText =
-          config.automation.negativeMatchType === 'EXACT' ? '[' + term + ']' : '"' + term + '"'
+    var query = normalizeNegativeText(row.Query || '')
+    for (var i = 0; i < rules.length; i++) {
+      var rule = rules[i]
+      var key = negativeRuleKey(rule)
+      if (!existing[key] && queryMatchesRule(query, rule) && isSafeNegativeRule(rule)) {
+        var negativeText = buildNegativeText(rule)
         if (!config.dryRun) campaign.createNegativeKeyword(negativeText)
-        existing[term] = true
-        negativeAdds.push({ term: term, matchType: config.automation.negativeMatchType })
+        existing[key] = true
+        negativeAdds.push({ term: rule.term, matchType: rule.matchType })
         break
       }
     }
   }
+}
+
+function buildSearchTermReportQuery(campaignName, startDate, endDate) {
+  return (
+    'SELECT CampaignName, Query, Impressions, Clicks, Cost, Conversions ' +
+    'FROM SEARCH_QUERY_PERFORMANCE_REPORT ' +
+    'WHERE CampaignStatus = ENABLED ' +
+    'AND CampaignName = "' +
+    escapeAwql(campaignName) +
+    '" DURING ' +
+    compactDate(startDate) +
+    ',' +
+    compactDate(endDate)
+  )
+}
+
+function compileSafeNegativeRules(config) {
+  var rules = []
+  var seen = {}
+
+  function addRule(term, matchType, source) {
+    var normalized = normalizeNegativeRule({ term: term, matchType: matchType, source: source })
+    if (!normalized) return
+    var key = negativeRuleKey(normalized)
+    if (seen[key]) return
+    seen[key] = true
+    rules.push(normalized)
+  }
+
+  var explicit = config.safeNegativeRules || []
+  for (var i = 0; i < explicit.length; i++) {
+    addRule(explicit[i].term, explicit[i].matchType, 'explicit')
+  }
+
+  var legacyTerms = config.safeNegativeTerms || []
+  var legacyMatchType = config.automation && config.automation.negativeMatchType
+  if (['PHRASE', 'EXACT'].indexOf(legacyMatchType) < 0) legacyMatchType = 'PHRASE'
+  for (var j = 0; j < legacyTerms.length; j++) {
+    addRule(legacyTerms[j], legacyMatchType, 'legacy')
+  }
+
+  return rules
+}
+
+function normalizeNegativeRule(rule) {
+  if (!rule) return null
+  var term = normalizeNegativeText(rule.term || '')
+  if (!term) return null
+  if (!isSafeNegativeTerm(term)) return null
+  var matchType = String(rule.matchType || 'PHRASE').toUpperCase()
+  if (['PHRASE', 'EXACT'].indexOf(matchType) < 0) return null
+  return { term: term, matchType: matchType, source: rule.source || 'legacy' }
+}
+
+function queryMatchesRule(query, rule) {
+  var haystack = ' ' + normalizeNegativeText(query) + ' '
+  var needle = ' ' + normalizeNegativeText(rule.term) + ' '
+  if (rule.matchType === 'EXACT') return haystack === needle
+  return haystack.indexOf(needle) >= 0
+}
+
+function buildNegativeText(rule) {
+  return rule.matchType === 'EXACT' ? '[' + rule.term + ']' : '"' + rule.term + '"'
+}
+
+function normalizeNegativeText(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function negativeRuleKey(rule) {
+  return String(rule.matchType || 'PHRASE').toUpperCase() + '|' + normalizeNegativeText(rule.term)
+}
+
+function isSafeNegativeRule(rule) {
+  return rule && isSafeNegativeTerm(rule.term)
 }
 
 function getExistingCampaignNegatives(campaignName) {
@@ -228,13 +297,10 @@ function getExistingCampaignNegatives(campaignName) {
   if (!it.hasNext()) return found
   var negatives = it.next().negativeKeywords().get()
   while (negatives.hasNext()) {
-    var text = String(negatives.next().getText())
-      .toLowerCase()
-      .replace(/^\[/, '')
-      .replace(/\]$/, '')
-      .replace(/^"/, '')
-      .replace(/"$/, '')
-    found[text] = true
+    var keyword = negatives.next()
+    var text = String(keyword.getText())
+    var matchType = text.indexOf('[') === 0 ? 'EXACT' : 'PHRASE'
+    found[matchType + '|' + normalizeNegativeText(text)] = true
   }
   return found
 }
@@ -637,5 +703,12 @@ if (typeof module !== 'undefined' && module.exports) {
     buildWeeklyHtmlEmail: buildWeeklyHtmlEmail,
     formatCallCount: formatCallCount,
     isReportDue: isReportDue,
+    buildSearchTermReportQuery: buildSearchTermReportQuery,
+    compileSafeNegativeRules: compileSafeNegativeRules,
+    normalizeNegativeText: normalizeNegativeText,
+    negativeRuleKey: negativeRuleKey,
+    queryMatchesRule: queryMatchesRule,
+    buildNegativeText: buildNegativeText,
+    normalizeNegativeRule: normalizeNegativeRule,
   }
 }
