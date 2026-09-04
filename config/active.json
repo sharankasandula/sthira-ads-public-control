@@ -219,6 +219,31 @@
       "term": "rebound rehabilitation physical therapy",
       "matchType": "EXACT",
       "note": "Exact named Rebound Rehabilitation provider query; official reboundrehab.com lists Florida locations."
+    },
+    {
+      "term": "jubilee hills apollo hospital",
+      "matchType": "EXACT",
+      "note": "Exact other-provider hospital query; retain generic physio and hospital intent."
+    },
+    {
+      "term": "onus hospital 697 sn reddy nagar keshava nagar saroor nagar east champapet hyderabad telangana 500035 india",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider hospital query; unrelated to Sthira services."
+    },
+    {
+      "term": "navya physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic name from live search terms; block branded intent only."
+    },
+    {
+      "term": "ss chambers near ysr statue 100 feet road ayyappa society madhapur reset neurotherapy and chiropractic wellness centre",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; unrelated branded neurotherapy/chiropractic intent."
+    },
+    {
+      "term": "wellknox",
+      "matchType": "PHRASE",
+      "note": "Competitor rehab brand seen in live search terms; block branded variants only."
     }
   ],
   "watchOnlyTerms": [
@@ -380,7 +405,7 @@
     }
   ],
   "negativeReview": {
-    "reviewedAt": "2026-09-04T21:33:48Z",
+    "reviewedAt": "2026-09-04T21:43:48.814359Z",
     "owner": "spandana"
   }
 }
