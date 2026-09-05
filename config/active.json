@@ -269,6 +269,31 @@
       "term": "ps clinic kondapur",
       "matchType": "EXACT",
       "note": "Exact branded competitor query; web evidence shows PS Clinic, Kondapur."
+    },
+    {
+      "term": "muralikrishna's physio clinic &rehab hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows Muralikrishna's Physio Clinic & Rehab in Hyderabad."
+    },
+    {
+      "term": "starhealthrehab hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows Starhealthrehab in Hyderabad."
+    },
+    {
+      "term": "shazeb hospital",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows Shazeb Hospital in Hyderabad."
+    },
+    {
+      "term": "skanda hospital nallagandla",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows Skanda Hospitals in Nallagandla."
+    },
+    {
+      "term": "sri sri wellbeing ayurveda and panchakarma clinic nallagandla",
+      "matchType": "EXACT",
+      "note": "Exact branded clinic query; web evidence shows Sri Sri Wellbeing Ayurveda and Panchakarma Clinic in Nalagandla."
     }
   ],
   "watchOnlyTerms": [
@@ -430,7 +455,7 @@
     }
   ],
   "negativeReview": {
-    "reviewedAt": "2026-09-05T03:46:07.093112Z",
-    "owner": "spandana"
+    "owner": "spandana",
+    "reviewedAt": "2026-09-05T11:45:32.391393Z"
   }
 }
