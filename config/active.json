@@ -244,6 +244,31 @@
       "term": "wellknox",
       "matchType": "PHRASE",
       "note": "Competitor rehab brand seen in live search terms; block branded variants only."
+    },
+    {
+      "term": "brinnova hospital",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows Brinnova Hospital Hyderabad."
+    },
+    {
+      "term": "dr dheeraj pain relief and wellness centre",
+      "matchType": "EXACT",
+      "note": "Exact branded provider query; evidence from site/Practo/Justdial for Hyderabad clinic."
+    },
+    {
+      "term": "physioheal physiotherapy hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows PhysioHeal Physio Rehab in Hyderabad."
+    },
+    {
+      "term": "movement school physio clinics electrotherapy sports physiotherapist in vanasthalipuram hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows Movement School Physio Clinics in Vanasthalipuram."
+    },
+    {
+      "term": "ps clinic kondapur",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; web evidence shows PS Clinic, Kondapur."
     }
   ],
   "watchOnlyTerms": [
@@ -405,7 +430,7 @@
     }
   ],
   "negativeReview": {
-    "reviewedAt": "2026-09-04T21:43:48.814359Z",
+    "reviewedAt": "2026-09-05T03:46:07.093112Z",
     "owner": "spandana"
   }
 }
