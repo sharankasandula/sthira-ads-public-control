@@ -319,6 +319,31 @@
       "term": "revive physiotherapy",
       "matchType": "EXACT",
       "note": "Exact competitor clinic name seen in live search terms; web evidence shows Revive Physiotherapy & Rehabilitation Centre in Hyderabad."
+    },
+    {
+      "term": "anssi wellness hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; ANSSI Wellness Hyderabad is a spine and pain centre."
+    },
+    {
+      "term": "anssi wellness near me",
+      "matchType": "EXACT",
+      "note": "Exact competitor brand query; ANSSI Wellness branded near-me variant."
+    },
+    {
+      "term": "physioshine neuro & chiropractic centre hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; PhysioShine is a Hyderabad physiotherapy and chiropractic centre."
+    },
+    {
+      "term": "dr kapil chand narra",
+      "matchType": "EXACT",
+      "note": "Exact provider-name query; Dr. Kapil Chand Narra runs Jaya Physio Clinics in Hyderabad."
+    },
+    {
+      "term": "dr naveen physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact provider-name query; Dr. Naveen Physiotherapist is a Hyderabad clinic/doctor search."
     }
   ],
   "watchOnlyTerms": [
@@ -481,6 +506,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-06T03:45:17.067801Z"
+    "reviewedAt": "2026-09-06T11:45:50.258484Z"
   }
 }
