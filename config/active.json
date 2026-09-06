@@ -294,6 +294,31 @@
       "term": "sri sri wellbeing ayurveda and panchakarma clinic nallagandla",
       "matchType": "EXACT",
       "note": "Exact branded clinic query; web evidence shows Sri Sri Wellbeing Ayurveda and Panchakarma Clinic in Nalagandla."
+    },
+    {
+      "term": "fit india physiotherapy and chiropractic centre hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic name seen in live search terms; web evidence shows FIT INDIA Physio/Chiropractic Centre in Hyderabad."
+    },
+    {
+      "term": "flexwell physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic name seen in live search terms; web evidence shows Flexwell Physiotherapy in Hyderabad."
+    },
+    {
+      "term": "spine reset chiropractic & physio wellness centre",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic name seen in live search terms; web evidence shows Spine Reset Chiropractic & Physio Wellness Centre in Hyderabad."
+    },
+    {
+      "term": "spinepro physio clinic",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic name seen in live search terms; web evidence shows SpinePro Physio Clinic in Hyderabad."
+    },
+    {
+      "term": "revive physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic name seen in live search terms; web evidence shows Revive Physiotherapy & Rehabilitation Centre in Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -456,6 +481,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-05T11:45:32.391393Z"
+    "reviewedAt": "2026-09-06T03:45:17.067801Z"
   }
 }
