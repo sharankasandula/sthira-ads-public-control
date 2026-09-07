@@ -344,6 +344,21 @@
       "term": "dr naveen physiotherapist",
       "matchType": "EXACT",
       "note": "Exact provider-name query; Dr. Naveen Physiotherapist is a Hyderabad clinic/doctor search."
+    },
+    {
+      "term": "activerehab",
+      "matchType": "PHRASE",
+      "note": "Competitor brand seen in live search terms; web evidence shows ActiveRehab Physiotherapy and Chiropractic Centre in Hyderabad."
+    },
+    {
+      "term": "flexitude",
+      "matchType": "PHRASE",
+      "note": "Competitor brand seen in live search terms; web evidence shows Flexitude Physio in Hyderabad."
+    },
+    {
+      "term": "medicover",
+      "matchType": "PHRASE",
+      "note": "Competitor hospital brand seen in live search terms; web evidence shows Medicover Hospitals physiotherapy in Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -506,6 +521,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-06T11:45:50.258484Z"
+    "reviewedAt": "2026-09-07T03:45:43.500430Z"
   }
 }
