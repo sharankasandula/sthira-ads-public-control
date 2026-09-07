@@ -359,6 +359,31 @@
       "term": "medicover",
       "matchType": "PHRASE",
       "note": "Competitor hospital brand seen in live search terms; web evidence shows Medicover Hospitals physiotherapy in Hyderabad."
+    },
+    {
+      "term": "aadya physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; web results show Aadya's Physiotherapy Clinic in Hyderabad."
+    },
+    {
+      "term": "srikara physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; web results show Srikara Physiotherapy and Orthopedic Hospitals."
+    },
+    {
+      "term": "physiomax",
+      "matchType": "PHRASE",
+      "note": "Competitor brand seen in live search terms; web results show PhysioMax Chiropractic & Physiotherapy in Hyderabad."
+    },
+    {
+      "term": "physiotattva",
+      "matchType": "PHRASE",
+      "note": "Competitor brand seen in live search terms; web results show PhysioTattva in Hyderabad."
+    },
+    {
+      "term": "elite care physiotherapy & rehabilitation",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; web results show Elite Care Physiotherapy & Rehabilitation in Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -521,6 +546,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-07T03:45:43.500430Z"
+    "reviewedAt": "2026-09-07T11:45:12.558012Z"
   }
 }
