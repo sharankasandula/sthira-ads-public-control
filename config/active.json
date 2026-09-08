@@ -409,6 +409,31 @@
       "term": "elite care physiotherapy & rehabilitation",
       "matchType": "EXACT",
       "note": "Exact competitor clinic query; web results show Elite Care Physiotherapy & Rehabilitation in Hyderabad."
+    },
+    {
+      "term": "axon physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; Justdial and Practo show Axon Physiotherapy Clinic in Hyderabad."
+    },
+    {
+      "term": "flexura physio care secunderabad",
+      "matchType": "EXACT",
+      "note": "Exact competitor brand query; official site and Justdial show Flexura Physio Care in Hyderabad."
+    },
+    {
+      "term": "legend physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact competitor clinic query; official site shows Legend Physiotherapy in Hyderabad."
+    },
+    {
+      "term": "dr sruthi physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact provider clinic query; Instagram and Magicpin show Dr Sruthi Physiotherapy Clinic in Gachibowli."
+    },
+    {
+      "term": "new life hospital",
+      "matchType": "EXACT",
+      "note": "Exact hospital brand query; Justdial shows New Life Hospital in Kukatpally with physiotherapy services."
     }
   ],
   "watchOnlyTerms": [
@@ -571,6 +596,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-08T06:18:24.393827Z"
+    "reviewedAt": "2026-09-08T11:45:14.319987Z"
   }
 }
