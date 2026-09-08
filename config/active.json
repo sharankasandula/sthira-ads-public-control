@@ -301,6 +301,31 @@
       "note": "Exact competitor clinic name seen in live search terms; web evidence shows FIT INDIA Physio/Chiropractic Centre in Hyderabad."
     },
     {
+      "term": "atharva physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact named provider query; web evidence shows Atharva Physiotherapy & Rehabilitation clinics."
+    },
+    {
+      "term": "happy life physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact named provider query; web evidence shows Happy Life Physiotherapy & Rehabilitation Clinic."
+    },
+    {
+      "term": "hashva physio center hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named provider query; web evidence shows Hashva Physio Center Hyderabad."
+    },
+    {
+      "term": "physio20 clinics chandanagar hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named provider query; web evidence shows Physio20 Clinics Chandanagar Hyderabad."
+    },
+    {
+      "term": "phani physio clinics",
+      "matchType": "EXACT",
+      "note": "Exact named provider query; web evidence shows Phani Physio Clinics Hyderabad."
+    },
+    {
       "term": "flexwell physiotherapy",
       "matchType": "EXACT",
       "note": "Exact competitor clinic name seen in live search terms; web evidence shows Flexwell Physiotherapy in Hyderabad."
@@ -546,6 +571,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-07T11:45:12.558012Z"
+    "reviewedAt": "2026-09-08T06:18:24.393827Z"
   }
 }
