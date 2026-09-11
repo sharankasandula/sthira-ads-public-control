@@ -439,6 +439,36 @@
       "term": "priya's physiotherapy clinic hyderabad",
       "matchType": "EXACT",
       "note": "Exact named competitor query with 2 clicks; Justdial lists Priya's Physiotherapy Clinic in Hyderabad."
+    },
+    {
+      "term": "satya orthopedic marredpally",
+      "matchType": "EXACT",
+      "note": "Exact named orthopedic-provider query with 1 click; branded intent is unrelated to Sthira's generic physio service."
+    },
+    {
+      "term": "nxt physioteq clinic karimnagar",
+      "matchType": "EXACT",
+      "note": "Exact named physiotherapy-provider query with 1 click; branded intent is unrelated to Sthira's local service."
+    },
+    {
+      "term": "malla reddy hospital suraram",
+      "matchType": "EXACT",
+      "note": "Exact named hospital query with 1 click; hospital-branded intent is unrelated to Sthira's generic physio service."
+    },
+    {
+      "term": "trishul chiropractic near me",
+      "matchType": "EXACT",
+      "note": "Exact named chiropractic-provider query with 1 click; branded intent is unrelated to Sthira's service."
+    },
+    {
+      "term": "dr kumar physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact named physiotherapist query with 1 click; person-branded intent is unrelated to Sthira's service."
+    },
+    {
+      "term": "balaji physiotherapy clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named physiotherapy-clinic query with 1 click; branded intent is unrelated to Sthira's service."
     }
   ],
   "watchOnlyTerms": [
@@ -601,6 +631,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-11T03:46:06.088928Z"
+    "reviewedAt": "2026-09-11T11:45:30.118375Z"
   }
 }
