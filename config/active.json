@@ -434,6 +434,11 @@
       "term": "new life hospital",
       "matchType": "EXACT",
       "note": "Exact hospital brand query; Justdial shows New Life Hospital in Kukatpally with physiotherapy services."
+    },
+    {
+      "term": "priya's physiotherapy clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named competitor query with 2 clicks; Justdial lists Priya's Physiotherapy Clinic in Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -596,6 +601,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-08T11:45:14.319987Z"
+    "reviewedAt": "2026-09-11T03:46:06.088928Z"
   }
 }
