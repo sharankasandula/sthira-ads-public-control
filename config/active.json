@@ -469,6 +469,31 @@
       "term": "balaji physiotherapy clinic hyderabad",
       "matchType": "EXACT",
       "note": "Exact named physiotherapy-clinic query with 1 click; branded intent is unrelated to Sthira's service."
+    },
+    {
+      "term": "hitech city apollo hospital",
+      "matchType": "EXACT",
+      "note": "Exact named hospital query with 1 click; Apollo-branded intent is unrelated to Sthira's generic physio service."
+    },
+    {
+      "term": "kims orthopedic doctor hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named hospital/provider query from live search terms; branded intent is unrelated to Sthira's local physio service."
+    },
+    {
+      "term": "dr ajaz physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact named physiotherapist query from live search terms; person-branded intent is unrelated to Sthira's service."
+    },
+    {
+      "term": "dr shashi orthopedic",
+      "matchType": "EXACT",
+      "note": "Exact named orthopedic-provider query from live search terms; branded intent is unrelated to Sthira's service."
+    },
+    {
+      "term": "citizen hospital orthopedic",
+      "matchType": "EXACT",
+      "note": "Exact named hospital/provider query from live search terms; branded intent is unrelated to Sthira's generic physio service."
     }
   ],
   "watchOnlyTerms": [
@@ -631,6 +656,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-11T11:45:30.118375Z"
+    "reviewedAt": "2026-09-12T03:45:20.362596Z"
   }
 }
