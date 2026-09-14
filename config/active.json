@@ -519,6 +519,11 @@
       "term": "new life physiotherapy clinic",
       "matchType": "EXACT",
       "note": "Exact named competitor query observed in live search terms; public listings identify New Life Physiotherapy Clinic in Hyderabad."
+    },
+    {
+      "term": "suryaa's physiotherapy and pain management clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named competitor query with 2 clicks; branded Suryaa's physiotherapy/pain-management clinic intent is unrelated to Sthira's generic local service."
     }
   ],
   "watchOnlyTerms": [
@@ -681,6 +686,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-14T03:46:06.443513Z"
+    "reviewedAt": "2026-09-14T11:45:45.629280Z"
   }
 }
