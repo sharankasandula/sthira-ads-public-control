@@ -534,6 +534,16 @@
       "term": "ketaki revival",
       "matchType": "PHRASE",
       "note": "Named competitor brand with 1 click; Ketaki Revival Clinic is listed as a multi-speciality pain clinic in Kondapur, Hyderabad."
+    },
+    {
+      "term": "minus physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query with 1 paid click; block branded intent only."
+    },
+    {
+      "term": "sri sai physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query with 1 paid click; block branded intent only."
     }
   ],
   "watchOnlyTerms": [
@@ -696,6 +706,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-16T03:45:17.912909Z"
+    "reviewedAt": "2026-09-16T11:45:10.315570Z"
   }
 }
