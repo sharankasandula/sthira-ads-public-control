@@ -524,6 +524,16 @@
       "term": "suryaa's physiotherapy and pain management clinic hyderabad",
       "matchType": "EXACT",
       "note": "Exact named competitor query with 2 clicks; branded Suryaa's physiotherapy/pain-management clinic intent is unrelated to Sthira's generic local service."
+    },
+    {
+      "term": "sai ranyata",
+      "matchType": "PHRASE",
+      "note": "Named competitor brand with 1 click; Sai Ranyata Physiotherapy & Chiro Clinic is listed in Nizampet, Hyderabad."
+    },
+    {
+      "term": "ketaki revival",
+      "matchType": "PHRASE",
+      "note": "Named competitor brand with 1 click; Ketaki Revival Clinic is listed as a multi-speciality pain clinic in Kondapur, Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -686,6 +696,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-15T11:45:45.732657Z"
+    "reviewedAt": "2026-09-16T03:45:17.912909Z"
   }
 }
