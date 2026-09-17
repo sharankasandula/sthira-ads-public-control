@@ -57,7 +57,7 @@
         "dailyEmailHourIst": {
           "type": "integer",
           "minimum": 18,
-          "maximum": 23
+          "maximum": 24
         },
         "weeklyEmailDayIso": {
           "type": "integer",

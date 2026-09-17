@@ -7,7 +7,7 @@
   "dailyBudgetTargetInr": 180,
   "reporting": {
     "dailyEmailEnabled": false,
-    "dailyEmailHourIst": 22,
+    "dailyEmailHourIst": 24,
     "weeklyEmailDayIso": 6,
     "callConversionActionName": "Clicks to call",
     "optimizationScoreFloor": 0.9

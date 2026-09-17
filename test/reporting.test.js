@@ -82,6 +82,7 @@ test('nightly report is emitted only once after the configured hour', () => {
   const props = { getProperty: () => null }
   assert.equal(isReportDue('2026-08-22', 21, 22, props), false)
   assert.equal(isReportDue('2026-08-22', 22, 22, props), true)
+  assert.equal(isReportDue('2026-08-22', 23, 24, props), false)
   assert.equal(
     isReportDue('2026-08-22', 23, 22, { getProperty: () => '2026-08-22' }),
     false,
