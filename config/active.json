@@ -544,6 +544,11 @@
       "term": "sri sai physiotherapy clinic",
       "matchType": "EXACT",
       "note": "Exact named other-provider query with 1 paid click; block branded intent only."
+    },
+    {
+      "term": "shikara pain management center",
+      "matchType": "EXACT",
+      "note": "Exact named pain-management provider query with 1 paid click; Shikara Pain Management Center is a Hyderabad clinic, so block branded intent only."
     }
   ],
   "watchOnlyTerms": [
@@ -706,6 +711,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-17T03:46:06.529709Z"
+    "reviewedAt": "2026-09-17T11:45:49.769659Z"
   }
 }
