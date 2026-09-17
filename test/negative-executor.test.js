@@ -11,6 +11,7 @@ function harness({ preview = false, customerId = '545-876-7317', name = 'Whatsap
   failure = false, review = new Date().toISOString(), dryRun = false, terms = null, rules = null } = {}) {
   const negatives = [], writes = [], emails = [], logs = [], state = {}
   const cfg = structuredClone(config)
+  cfg.enabled = true
   cfg.safeNegativeTerms = ['jobs', 'buy']
   cfg.safeNegativeRules = [{ term: 'google maps', matchType: 'EXACT' }, { term: 'physiotherapy', matchType: 'EXACT' }].slice(0, 1)
   cfg.negativeReview.reviewedAt = review

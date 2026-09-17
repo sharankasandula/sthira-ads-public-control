@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "enabled": true,
+  "enabled": false,
   "dryRun": false,
   "notificationEmail": "sharankasandula@gmail.com",
   "campaignName": "Whatsapp Leads -1",
