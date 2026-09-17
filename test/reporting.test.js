@@ -8,6 +8,7 @@ const {
   buildWeeklyHtmlEmail,
   formatCallCount,
   isReportDue,
+  getScheduledReportType,
   buildSearchTermReportQuery,
   compileSafeNegativeRules,
   negativeRuleKey,
@@ -85,6 +86,14 @@ test('nightly report is emitted only once after the configured hour', () => {
     isReportDue('2026-08-22', 23, 22, { getProperty: () => '2026-08-22' }),
     false,
   )
+})
+
+test('daily email can be disabled without disabling the weekly report', () => {
+  const config = { reporting: { dailyEmailEnabled: false, weeklyEmailDayIso: 6 } }
+  assert.equal(getScheduledReportType(config, 5), 'none')
+  assert.equal(getScheduledReportType(config, 6), 'weekly')
+  config.reporting.dailyEmailEnabled = true
+  assert.equal(getScheduledReportType(config, 5), 'daily')
 })
 
 test('negative rules support exact-only navigation matches and phrase allow-list matches', () => {

@@ -136,6 +136,9 @@ function loadAndValidateConfig() {
     if (!c.reporting || c.reporting.callConversionActionName !== 'Clicks to call') {
       throw new Error('invalid reporting config')
     }
+    if (typeof c.reporting.dailyEmailEnabled !== 'boolean') {
+      throw new Error('dailyEmailEnabled must be boolean')
+    }
     return { ok: true, config: c }
   } catch (e) {
     return { ok: false, error: e && e.message ? e.message : String(e) }
@@ -342,12 +345,20 @@ function maybeSendScheduledReport(config, now) {
   var isoDay = Number(Utilities.formatDate(now, 'Asia/Calcutta', 'u'))
   if (!isReportDue(date, hour, config.reporting.dailyEmailHourIst, props)) return
 
-  if (isoDay === config.reporting.weeklyEmailDayIso) {
+  var reportType = getScheduledReportType(config, isoDay)
+  if (reportType === 'weekly') {
     sendWeeklyReport(config, now, props)
-  } else {
+  } else if (reportType === 'daily') {
     sendDailyReport(config, date)
+  } else {
+    Logger.log('Nightly daily report disabled by config')
   }
   props.setProperty(STATE_KEYS.lastReportDate, date)
+}
+
+function getScheduledReportType(config, isoDay) {
+  if (isoDay === config.reporting.weeklyEmailDayIso) return 'weekly'
+  return config.reporting.dailyEmailEnabled === false ? 'none' : 'daily'
 }
 
 function isReportDue(date, hour, reportHour, props) {
@@ -698,6 +709,7 @@ if (typeof module !== 'undefined' && module.exports) {
     buildWeeklyHtmlEmail: buildWeeklyHtmlEmail,
     formatCallCount: formatCallCount,
     isReportDue: isReportDue,
+    getScheduledReportType: getScheduledReportType,
     buildSearchTermReportQuery: buildSearchTermReportQuery,
     compileSafeNegativeRules: compileSafeNegativeRules,
     normalizeNegativeText: normalizeNegativeText,

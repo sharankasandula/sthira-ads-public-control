@@ -43,6 +43,7 @@
     "reporting": {
       "type": "object",
       "required": [
+        "dailyEmailEnabled",
         "dailyEmailHourIst",
         "weeklyEmailDayIso",
         "callConversionActionName",
@@ -50,6 +51,9 @@
       ],
       "additionalProperties": false,
       "properties": {
+        "dailyEmailEnabled": {
+          "type": "boolean"
+        },
         "dailyEmailHourIst": {
           "type": "integer",
           "minimum": 18,
