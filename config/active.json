@@ -550,6 +550,11 @@
       "term": "shikara pain management center",
       "matchType": "EXACT",
       "note": "Exact named pain-management provider query with 1 paid click; Shikara Pain Management Center is a Hyderabad clinic, so block branded intent only."
+    },
+    {
+      "term": "dr lakshmoji's physiocare rangareddy",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query observed with 1 click; search evidence identifies Dr.Lakshmoji's Physiocare as a physiotherapy clinic in Hyderabad/Rangareddy."
     }
   ],
   "watchOnlyTerms": [
@@ -712,6 +717,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-18T03:45:54.427190Z"
+    "reviewedAt": "2026-09-18T11:45:30.251337Z"
   }
 }
