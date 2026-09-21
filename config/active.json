@@ -555,6 +555,16 @@
       "term": "dr lakshmoji's physiocare rangareddy",
       "matchType": "EXACT",
       "note": "Exact named other-provider query observed with 1 click; search evidence identifies Dr.Lakshmoji's Physiocare as a physiotherapy clinic in Hyderabad/Rangareddy."
+    },
+    {
+      "term": "shruti physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a click; retain generic physiotherapist intent."
+    },
+    {
+      "term": "max wellness center",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a click; unrelated Max Wellness Center intent."
     }
   ],
   "watchOnlyTerms": [
@@ -717,6 +727,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-20T11:45:27.161453Z"
+    "reviewedAt": "2026-09-21T03:45:53.469681Z"
   }
 }
