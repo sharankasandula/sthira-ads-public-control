@@ -572,6 +572,11 @@
       "note": "Exact unrelated massage-service query with a paid click; preserve physiotherapy and clinical-service intent."
     },
     {
+      "term": "massage near me",
+      "matchType": "EXACT",
+      "note": "Exact unrelated massage-service query; preserve physiotherapy and clinical-service intent."
+    },
+    {
       "term": "cold therapy machine for knee near me",
       "matchType": "EXACT",
       "note": "Exact product/equipment query; unrelated to booking physiotherapy."
@@ -747,6 +752,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-23T03:45:36.349787Z"
+    "reviewedAt": "2026-09-23T11:45:17.352471Z"
   }
 }
