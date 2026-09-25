@@ -590,6 +590,11 @@
       "term": "shoulder massager near me",
       "matchType": "EXACT",
       "note": "Exact product query; unrelated to booking physiotherapy."
+    },
+    {
+      "term": "physioshine hyd",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a paid click; web evidence identifies PhysioShine Physiotherapy & Rehabilitation Center in Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -752,6 +757,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-24T11:45:34.955955Z"
+    "reviewedAt": "2026-09-25T03:45:22.237814Z"
   }
 }
