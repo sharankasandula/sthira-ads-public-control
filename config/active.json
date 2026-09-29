@@ -650,6 +650,16 @@
       "term": "spine care wellness center spine care wellness center near me",
       "matchType": "EXACT",
       "note": "Exact named-provider query; web evidence identifies Spine Care Wellness Center Kompally, Hyderabad, offering chiropractic and physiotherapy."
+    },
+    {
+      "term": "sriram clinic physiotherapy in manikonda",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a paid click; web evidence identifies SRI RAM CLINICS PHYSIOTHERAPY Center in Manikonda, Hyderabad."
+    },
+    {
+      "term": "yoga classes for back pain near me",
+      "matchType": "EXACT",
+      "note": "Exact yoga-class query with a paid click; unrelated service intent, while retaining physiotherapy back-pain searches."
     }
   ],
   "watchOnlyTerms": [
@@ -812,6 +822,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-29T03:46:13.231006Z"
+    "reviewedAt": "2026-09-29T11:45:53.193178Z"
   }
 }
