@@ -660,6 +660,11 @@
       "term": "yoga classes for back pain near me",
       "matchType": "EXACT",
       "note": "Exact yoga-class query with a paid click; unrelated service intent, while retaining physiotherapy back-pain searches."
+    },
+    {
+      "term": "posture corrector near me",
+      "matchType": "EXACT",
+      "note": "Exact product-shopping query with a paid click; retain posture-correction physiotherapy intent."
     }
   ],
   "watchOnlyTerms": [
@@ -822,6 +827,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-09-29T11:45:53.193178Z"
+    "reviewedAt": "2026-09-30T03:46:04.267730Z"
   }
 }
