@@ -665,6 +665,11 @@
       "term": "posture corrector near me",
       "matchType": "EXACT",
       "note": "Exact product-shopping query with a paid click; retain posture-correction physiotherapy intent."
+    },
+    {
+      "term": "reset physio & chiro clinic balaji nagar ramachandrapuram",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with paid clicks; block Reset Physio & Chiro Clinic branded intent while retaining generic physiotherapy and chiropractic searches."
     }
   ],
   "watchOnlyTerms": [
@@ -827,6 +832,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-02T03:45:45.251154Z"
+    "reviewedAt": "2026-10-02T11:45:16.199352Z"
   }
 }
