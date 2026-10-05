@@ -675,6 +675,11 @@
       "term": "dr k lavanya's physiotherapy and rehabilitation madeenaguda",
       "matchType": "EXACT",
       "note": "Exact named-provider query with a paid click; block Dr K Lavanya's branded clinic intent while retaining generic rehabilitation searches."
+    },
+    {
+      "term": "shamaa physiocare serilingampalle m",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with five paid clicks; block Shamaa Physiocare branded intent while retaining generic physiotherapy searches."
     }
   ],
   "watchOnlyTerms": [
@@ -837,6 +842,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-05T03:45:32.199672Z"
+    "reviewedAt": "2026-10-05T11:45:29.558052Z"
   }
 }
