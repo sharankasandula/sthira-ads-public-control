@@ -680,6 +680,11 @@
       "term": "shamaa physiocare serilingampalle m",
       "matchType": "EXACT",
       "note": "Exact named-provider query with five paid clicks; block Shamaa Physiocare branded intent while retaining generic physiotherapy searches."
+    },
+    {
+      "term": "ezee well physiotherapy orthopaedic and pain clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a paid click; block Ezee Well branded intent while retaining generic physiotherapy, orthopaedic, and pain-management searches."
     }
   ],
   "watchOnlyTerms": [
@@ -842,6 +847,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-05T11:45:29.558052Z"
+    "reviewedAt": "2026-10-06T03:45:30.367965Z"
   }
 }
