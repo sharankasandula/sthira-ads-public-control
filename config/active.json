@@ -685,6 +685,11 @@
       "term": "ezee well physiotherapy orthopaedic and pain clinic hyderabad",
       "matchType": "EXACT",
       "note": "Exact named-provider query with a paid click; block Ezee Well branded intent while retaining generic physiotherapy, orthopaedic, and pain-management searches."
+    },
+    {
+      "term": "srini physio clinics hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a paid click; web evidence identifies Srini Physio Care, a physical therapy clinic in Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -847,6 +852,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-07T11:45:31.163917Z"
+    "reviewedAt": "2026-10-08T03:45:36.121703Z"
   }
 }
