@@ -690,6 +690,31 @@
       "term": "srini physio clinics hyderabad",
       "matchType": "EXACT",
       "note": "Exact named-provider query with a paid click; web evidence identifies Srini Physio Care, a physical therapy clinic in Hyderabad."
+    },
+    {
+      "term": "activelife physiotherapy & chiro laser osteopathy photos",
+      "matchType": "EXACT",
+      "note": "Exact named-provider/photo-intent query; web evidence identifies ActiveLife Physiotherapy & Rehabilitation Centre in Hyderabad."
+    },
+    {
+      "term": "spine pro physio clinic gachibowli",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies SPINEPRO Physio Clinic in Gachibowli, Hyderabad."
+    },
+    {
+      "term": "spine reset chiropractic and physio wellness centre hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Spine Reset Chiropractic & Physio Wellness Centre in Hyderabad."
+    },
+    {
+      "term": "sri revive physiotherapy clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Sri Revive Physiotherapy Clinic in Hyderabad."
+    },
+    {
+      "term": "abhijaya health hub best physiotherapy best dental clinic in nallagandla",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Abhijaya Physio/Health Hub in Nallagandla, Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -852,6 +877,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-08T11:45:31.062244Z"
+    "reviewedAt": "2026-10-11T12:16:39.355947Z"
   }
 }
