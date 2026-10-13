@@ -730,6 +730,31 @@
       "term": "vedya's physio care miyapur",
       "matchType": "EXACT",
       "note": "Exact named provider query; live search term and Vedya's Miyapur clinic site confirm unrelated branded intent."
+    },
+    {
+      "term": "hitha physiocare hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Hitha Physiocare physical therapy clinic in Hyderabad."
+    },
+    {
+      "term": "cb physiotherapy hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies CB Physiotherapy clinics in Hyderabad."
+    },
+    {
+      "term": "mission health hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; Mission Health Hyderabad publishes a separate Physiotherapy & Rehab service."
+    },
+    {
+      "term": "i n physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies I.N Physiotherapy Clinic in Hyderabad."
+    },
+    {
+      "term": "dr younus sofi",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Dr. Younus Sofi as a Hyderabad physiotherapist at Physiofit."
     }
   ],
   "watchOnlyTerms": [
@@ -892,6 +917,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-12T11:45:48.386503Z"
+    "reviewedAt": "2026-10-13T11:46:26.113454Z"
   }
 }
