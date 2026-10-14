@@ -82,6 +82,26 @@
   ],
   "safeNegativeRules": [
     {
+      "term": "maha's fisiolife best physiotherapy clinic sports physiotherapist shockwave therapy home care physiotherapy vanasthalipuram",
+      "matchType": "EXACT",
+      "note": "Exact branded competitor query; Maha's Fisiolife is a physiotherapy clinic in Vanasthalipuram, Hyderabad."
+    },
+    {
+      "term": "dr manoj physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; live results identify Dr Manoj physiotherapy practices in Hyderabad."
+    },
+    {
+      "term": "dr priyanka physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; live results identify Dr Priyanka physiotherapy practices in Hyderabad."
+    },
+    {
+      "term": "thrive pain clinic wellness and more rai durg",
+      "matchType": "EXACT",
+      "note": "Exact branded provider query; Thrive Pain Clinic Wellness and More is listed in Raidurg, Hyderabad."
+    },
+    {
       "term": "maps google",
       "matchType": "EXACT",
       "note": "Navigation-only string"
@@ -932,6 +952,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-14T03:45:35.666623Z"
+    "reviewedAt": "2026-10-14T11:45:33.125499Z"
   }
 }
