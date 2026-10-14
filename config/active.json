@@ -755,6 +755,21 @@
       "term": "dr younus sofi",
       "matchType": "EXACT",
       "note": "Exact named-provider query; web evidence identifies Dr. Younus Sofi as a Hyderabad physiotherapist at Physiofit."
+    },
+    {
+      "term": "dr vinay kumar physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Dr. Vinay Kumar M as a Hyderabad physiotherapist at Shree Mitra and Safe Rehaab centres."
+    },
+    {
+      "term": "physiofit hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies multiple Physiofit physiotherapy clinics in Hyderabad."
+    },
+    {
+      "term": "maha's fisiolife best physiotherapy clinic sports physiotherapist shockwave therapy home care physiotherapy vanasthalipuram",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; web evidence identifies Maha's Fisiolife physiotherapy clinic in Vanasthalipuram, Hyderabad."
     }
   ],
   "watchOnlyTerms": [
@@ -917,6 +932,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-13T11:46:26.113454Z"
+    "reviewedAt": "2026-10-14T03:45:35.666623Z"
   }
 }
