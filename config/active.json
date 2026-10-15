@@ -607,11 +607,6 @@
       "note": "Exact product/equipment query; unrelated to booking physiotherapy."
     },
     {
-      "term": "posture corrector belt near me",
-      "matchType": "EXACT",
-      "note": "Exact product query; unrelated to booking physiotherapy."
-    },
-    {
       "term": "shoulder massager near me",
       "matchType": "EXACT",
       "note": "Exact product query; unrelated to booking physiotherapy."
@@ -685,11 +680,6 @@
       "term": "yoga classes for back pain near me",
       "matchType": "EXACT",
       "note": "Exact yoga-class query with a paid click; unrelated service intent, while retaining physiotherapy back-pain searches."
-    },
-    {
-      "term": "posture corrector near me",
-      "matchType": "EXACT",
-      "note": "Exact product-shopping query with a paid click; retain posture-correction physiotherapy intent."
     },
     {
       "term": "reset physio & chiro clinic balaji nagar ramachandrapuram",
@@ -811,7 +801,8 @@
     "needle therapy",
     "ift physiotherapy",
     "pediatric physiotherapist",
-    "bone setting"
+    "bone setting",
+    "posture corrector"
   ],
   "approvalRequiredFor": [
     "budget_increase",
