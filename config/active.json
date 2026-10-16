@@ -780,6 +780,11 @@
       "term": "maha's fisiolife best physiotherapy clinic sports physiotherapist shockwave therapy home care physiotherapy vanasthalipuram",
       "matchType": "EXACT",
       "note": "Exact named-provider query; web evidence identifies Maha's Fisiolife physiotherapy clinic in Vanasthalipuram, Hyderabad."
+    },
+    {
+      "term": "walk and heal physiotherapy clinic and homecare services",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; public listing identifies Walk and Heal Physiotherapy Clinic and Home Care Services in Visakhapatnam, unrelated to Sthira's Hyderabad service."
     }
   ],
   "watchOnlyTerms": [
@@ -943,6 +948,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-15T03:45:22.179948Z"
+    "reviewedAt": "2026-10-16T03:45:21.305585Z"
   }
 }
