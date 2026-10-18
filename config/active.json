@@ -785,6 +785,16 @@
       "term": "walk and heal physiotherapy clinic and homecare services",
       "matchType": "EXACT",
       "note": "Exact named-provider query; public listing identifies Walk and Heal Physiotherapy Clinic and Home Care Services in Visakhapatnam, unrelated to Sthira's Hyderabad service."
+    },
+    {
+      "term": "praanaa pain clinic treatment cost",
+      "matchType": "EXACT",
+      "note": "Exact named-provider pricing query; praanaapainclinic.com and Practo identify Praanaa Pain Clinic in Attapur, Hyderabad. Block only this other-provider query; preserve generic pain treatment and pricing intent."
+    },
+    {
+      "term": "reborn physiocare physiotherapy & rehabilitation dr shyam k best physiotherapist in hyderabad rcpuram",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; Justdial identifies Reborn Physiocare in R C Puram, Hyderabad and Dr Shyam. Block only this other-clinic navigation query; preserve generic rehabilitation intent."
     }
   ],
   "watchOnlyTerms": [
@@ -948,6 +958,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-17T03:45:45.710717Z"
+    "reviewedAt": "2026-10-18T03:46:09.348354Z"
   }
 }
