@@ -795,6 +795,41 @@
       "term": "reborn physiocare physiotherapy & rehabilitation dr shyam k best physiotherapist in hyderabad rcpuram",
       "matchType": "EXACT",
       "note": "Exact named-provider query; Justdial identifies Reborn Physiocare in R C Puram, Hyderabad and Dr Shyam. Block only this other-clinic navigation query; preserve generic rehabilitation intent."
+    },
+    {
+      "term": "active life physiotherapy kphb",
+      "matchType": "EXACT",
+      "note": "Exact other-provider navigation query; activelifephysiorehab.com identifies ActiveLife Physiotherapy in KPHB, Hyderabad. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "be well physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand query; bewellphysiotherapy.in identifies Be Well Physiotherapy in A.S. Rao Nagar, Hyderabad. Preserve generic wellness and therapy intent."
+    },
+    {
+      "term": "dr diwakars physiotherapy and rehabilitation clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; Justdial lists Dr.diwakar Physiotherapy Clinic in Nizampet and the diwakars_physiotherapy profile identifies Diwakar's Physiotherapy & Rehabilitation Center in Hyderabad. Exclude only this other-provider query."
+    },
+    {
+      "term": "i n physiotherapy clinic kokapet hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider location variant; Practo lists I N Physiotherapy Clinic in Kokapet, Hyderabad. Existing shorter EXACT rules do not cover this full query; preserve generic clinic and location intent."
+    },
+    {
+      "term": "legend physiotherapy near me",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant; legendphysiotherapy.com lists its Hyderabad Kokapet service. Existing legend physiotherapy EXACT does not cover this near-me query; preserve generic near-me intent."
+    },
+    {
+      "term": "shravan physiotherapist near me",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; Practo and Lybrate identify Dr E.P. Shravan as a Hyderabad physiotherapist. Exclude only this person-specific query, preserving generic physiotherapist intent."
+    },
+    {
+      "term": "spinepro physio clinic photos",
+      "matchType": "EXACT",
+      "note": "Exact other-provider photo query; spinepro.in and Practo identify SPINEPRO Physio Clinic in Gachibowli, Hyderabad. Existing shorter EXACT rules do not cover this photo variant; preserve generic spine therapy intent."
     }
   ],
   "watchOnlyTerms": [
@@ -958,6 +993,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-18T03:46:09.348354Z"
+    "reviewedAt": "2026-10-20T03:46:12.939732Z"
   }
 }
