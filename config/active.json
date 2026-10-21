@@ -830,6 +830,16 @@
       "term": "spinepro physio clinic photos",
       "matchType": "EXACT",
       "note": "Exact other-provider photo query; spinepro.in and Practo identify SPINEPRO Physio Clinic in Gachibowli, Hyderabad. Existing shorter EXACT rules do not cover this photo variant; preserve generic spine therapy intent."
+    },
+    {
+      "term": "spinepro physio clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider location variant; spinepro.in identifies SpinePro Physiotherapy Clinic in Hyderabad with Kondapur, Gachibowli and Khajaguda branches. Shorter EXACT rules do not cover this variant; preserve generic spine and physiotherapy intent."
+    },
+    {
+      "term": "rims nallagandla",
+      "matchType": "EXACT",
+      "note": "Exact other-provider navigation query; rims4u.in and Justdial identify Rehab Institute of Movement Sciences (RIMS) in Nallagandla, Hyderabad. Exclude only this named-provider query; preserve generic rehabilitation and Nallagandla service intent."
     }
   ],
   "watchOnlyTerms": [
@@ -993,6 +1003,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-20T03:46:12.939732Z"
+    "reviewedAt": "2026-10-21T03:46:09.687927Z"
   }
 }
