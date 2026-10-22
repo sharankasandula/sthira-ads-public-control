@@ -840,6 +840,11 @@
       "term": "rims nallagandla",
       "matchType": "EXACT",
       "note": "Exact other-provider navigation query; rims4u.in and Justdial identify Rehab Institute of Movement Sciences (RIMS) in Nallagandla, Hyderabad. Exclude only this named-provider query; preserve generic rehabilitation and Nallagandla service intent."
+    },
+    {
+      "term": "srini physio clinics",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant; Practo lists Srini Physio Care in IDA Jeedimetla and Justdial lists its Hyderabad clinics. Existing srini physio clinics hyderabad EXACT does not cover this shorter variant; preserve generic physiotherapy intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1003,6 +1008,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-21T03:46:09.687927Z"
+    "reviewedAt": "2026-10-22T03:46:09.218340Z"
   }
 }
