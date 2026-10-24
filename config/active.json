@@ -855,6 +855,16 @@
       "term": "sandhya physiotherapy",
       "matchType": "EXACT",
       "note": "Exact named-provider query; sandhyaphysiocare.com identifies Dr K Naga Sandhya's physiotherapy clinic and Justdial lists Sandhya Physiocare Rehabilitation Centre in Tellapur, Hyderabad. Exclude only this other-provider query; preserve generic physiotherapy intent."
+    },
+    {
+      "term": "shine physiotherapy and chiropractic wellness care hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider query; Shine Physiotherapy's public Instagram identifies Shine Physiotherapy & Chiropractic Wellness Care in Hyderabad, and Justdial lists Shine Physiotherapy in Hyderabad. Exclude only this branded query; preserve generic physiotherapy and chiropractic intent."
+    },
+    {
+      "term": "curamos physiotherapy diet clinic nallagandla",
+      "matchType": "EXACT",
+      "note": "Exact other-provider query; Practo lists Curamos Physiotherapy-Diet Clinic in Nallagandla, Hyderabad. Exclude only this clinic-branded query; preserve generic physiotherapy, diet and Nallagandla service intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1018,6 +1028,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-23T03:46:08.215619Z"
+    "reviewedAt": "2026-10-24T06:12:21.845605Z"
   }
 }
