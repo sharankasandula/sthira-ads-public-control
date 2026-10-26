@@ -865,6 +865,16 @@
       "term": "curamos physiotherapy diet clinic nallagandla",
       "matchType": "EXACT",
       "note": "Exact other-provider query; Practo lists Curamos Physiotherapy-Diet Clinic in Nallagandla, Hyderabad. Exclude only this clinic-branded query; preserve generic physiotherapy, diet and Nallagandla service intent."
+    },
+    {
+      "term": "rims physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant; rims4u.in identifies Rehab Institute of Movement Sciences (RIMS) and its physiotherapy services, and Justdial lists RIMS in Nallagandla. Existing rims nallagandla EXACT does not cover this variant; preserve generic physiotherapy intent."
+    },
+    {
+      "term": "shikara pain management center best pain management hospital in dilsuknagar hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider location variant; shikarapainmanagementcenter.com identifies Shikara Pain Management Center in Dilsukhnagar. Existing shorter EXACT does not cover this full branded query; preserve generic pain-management and hospital intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1028,6 +1038,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-24T06:12:21.845605Z"
+    "reviewedAt": "2026-10-26T03:45:32.728067Z"
   }
 }
