@@ -875,6 +875,16 @@
       "term": "shikara pain management center best pain management hospital in dilsuknagar hyderabad",
       "matchType": "EXACT",
       "note": "Exact other-provider location variant; shikarapainmanagementcenter.com identifies Shikara Pain Management Center in Dilsukhnagar. Existing shorter EXACT does not cover this full branded query; preserve generic pain-management and hospital intent."
+    },
+    {
+      "term": "active life physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant; Justdial lists Active Life Physiotherapy in Chandrayan Gutta, Hyderabad, and the drkiranactivelife public profile identifies Active Life Physiotherapy KPHB. Existing location-specific EXACT does not cover this clinic variant; preserve generic physiotherapy intent."
+    },
+    {
+      "term": "get well physiotherapy and polyclinics ameenpur hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider location query; getwellphysioclinic.in and Justdial identify Get Well Physiotherapy & Polyclinics in Ameenpur, Hyderabad. Exclude only this branded clinic query; preserve generic physiotherapy and Ameenpur service intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1038,6 +1048,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-26T03:45:32.728067Z"
+    "reviewedAt": "2026-10-27T03:45:32.425122Z"
   }
 }
