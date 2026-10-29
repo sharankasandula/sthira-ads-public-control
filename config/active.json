@@ -885,6 +885,16 @@
       "term": "get well physiotherapy and polyclinics ameenpur hyderabad",
       "matchType": "EXACT",
       "note": "Exact other-provider location query; getwellphysioclinic.in and Justdial identify Get Well Physiotherapy & Polyclinics in Ameenpur, Hyderabad. Exclude only this branded clinic query; preserve generic physiotherapy and Ameenpur service intent."
+    },
+    {
+      "term": "anssi wellness center",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant; anssiwellness.com/clinic/hyderabad/ identifies ANSSI Wellness in Ameerpet, Hyderabad. Existing location and near-me EXACT rules do not cover this center variant; preserve generic wellness and clinical-service intent."
+    },
+    {
+      "term": "lotus physiotherapy and pain relief clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider clinic query; lotusphysiotherapy.com identifies Lotus Physiotherapy & Pain Relief Clinic and Justdial lists its Mehdipatnam, Hyderabad location. Exclude only this branded clinic query; preserve generic physiotherapy and pain-relief intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1048,6 +1058,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-28T03:45:30.218275Z"
+    "reviewedAt": "2026-10-29T03:45:31.189461Z"
   }
 }
