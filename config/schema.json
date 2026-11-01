@@ -208,7 +208,7 @@
           },
           "note": {
             "type": "string",
-            "maxLength": 160
+            "maxLength": 512
           }
         }
       },
