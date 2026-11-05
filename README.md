@@ -38,6 +38,18 @@ writer. Append audited `safeNegativeRules` using EXACT for full unrelated querie
 PHRASE rules require a specific, justified irrelevant intent. Never publish raw search reports,
 patient data, secrets or ambiguous clinical exclusions. Preserve the rest of the config.
 
+Every rule must fit Google Ads keyword limits: at most 80 characters and 10 words. The executor
+skips longer terms, so they can never be applied. Do not queue them; if a long competitor query
+recurs, use a shorter rule that is still evidenced, or leave it. `config/schema.json` enforces both
+limits. On 6 November 2026, 8 overlength EXACT rules (never applied in Ads) were removed in a
+reviewed maintenance commit after they blocked the daily review from 2 November.
+
+For local validation, install `python3 -m pip install -r requirements-dev.txt` in the development
+environment. `npm run verify` runs the tests and full Draft 2020-12 schema validation, including
+date formats. Use `npm run validate:config` for the schema gate alone. A passing JSON parse is not
+schema acceptance. Recurring publication must still never remove rules, relax bounds or bypass
+the live-review commit hook.
+
 After a successful live read and review, update `negativeReview.reviewedAt` to its UTC ISO time
 and keep `negativeReview.owner` as `spandana`, including when no new rules qualify. Never refresh
 that timestamp from cached, failed or partial source reads. The executor freezes new additions and

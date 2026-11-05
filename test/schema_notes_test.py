@@ -44,7 +44,8 @@ class SchemaNotesTest(unittest.TestCase):
 
     def test_term_lengths_and_match_types_stay_restricted(self):
         properties = self.rule_schema['properties']
-        self.assertEqual(properties['term'], {'type': 'string', 'minLength': 2, 'maxLength': 80})
+        self.assertEqual(properties['term'], {'type': 'string', 'minLength': 2, 'maxLength': 80,
+                                             'pattern': r'^\S+(?:\s+\S+){0,9}$'})
         self.assertTrue(within_string_bounds('x' * 80, properties['term']))
         self.assertFalse(within_string_bounds('x' * 81, properties['term']))
         self.assertEqual(properties['matchType']['enum'], ['PHRASE', 'EXACT'])
