@@ -855,6 +855,36 @@
       "term": "lotus physiotherapy and pain relief clinic hyderabad",
       "matchType": "EXACT",
       "note": "Exact other-provider clinic query; lotusphysiotherapy.com identifies Lotus Physiotherapy & Pain Relief Clinic and Justdial lists its Mehdipatnam, Hyderabad location. Exclude only this branded clinic query; preserve generic physiotherapy and pain-relief intent."
+    },
+    {
+      "term": "physiopulse dr sankalp physiotherapist nims hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query; Justdial lists Dr.Sankalp Physiotherapist(Nims) in Mehdipatnam, Hyderabad, and a public Physiopulse profile identifies Dr Sankalp. Exclude only this other-provider query; preserve generic physiotherapy and NIMS-related clinical intent."
+    },
+    {
+      "term": "epione pain care",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand query; epionepainandspine.com and epionepainclinic.com identify Epione pain-management centres in Hyderabad. Exclude only this branded query; preserve generic pain-care intent."
+    },
+    {
+      "term": "epione hospital near me",
+      "matchType": "EXACT",
+      "note": "Exact other-provider hospital query; epionepainandspine.com identifies Epione pain-management hospital in Hyderabad and Practo lists Epione in Banjara Hills. Preserve generic hospital and near-me intent."
+    },
+    {
+      "term": "jaya physiotherapy clinic madhapur",
+      "matchType": "EXACT",
+      "note": "Exact other-provider location variant; jayaphysioclinics.in identifies Jaya Physio Clinics and Practo lists its Madhapur practice. Existing jaya clinic madhapur EXACT does not cover this variant; preserve generic physiotherapy and Madhapur intent."
+    },
+    {
+      "term": "praanaa pain clinic hyderabad address",
+      "matchType": "EXACT",
+      "note": "Exact other-provider address variant; praanaapainclinic.com and Practo identify Praanaa Pain Clinic in Attapur, Hyderabad. Existing shorter address EXACT does not cover this variant; preserve generic pain-clinic and address intent."
+    },
+    {
+      "term": "apollo physiotherapy near me",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand query; apollohospitals.com/book-doctor-appointment/physiotherapist/hyderabad lists Apollo physiotherapists in Hyderabad. Existing hospital-specific EXACT rules do not cover this variant; preserve generic physiotherapy and near-me intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1018,6 +1048,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-10-29T03:45:31.189461Z"
+    "reviewedAt": "2026-11-05T20:10:50.122697Z"
   }
 }
