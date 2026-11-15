@@ -885,6 +885,131 @@
       "term": "apollo physiotherapy near me",
       "matchType": "EXACT",
       "note": "Exact other-provider brand query; apollohospitals.com/book-doctor-appointment/physiotherapist/hyderabad lists Apollo physiotherapists in Hyderabad. Existing hospital-specific EXACT rules do not cover this variant; preserve generic physiotherapy and near-me intent."
+    },
+    {
+      "term": "center for integrative medicine",
+      "matchType": "PHRASE",
+      "note": "Named other-provider brand; Practo and dradityabapuji.com identify Center for Integrative Medicine in Banjara Hills, Hyderabad. The observed branded query with a paid click exceeds single-rule length limits, so block this provider brand only, preserving generic physiotherapy, back/neck/shoulder and sciatica intent."
+    },
+    {
+      "term": "physio shine lb nagar",
+      "matchType": "EXACT",
+      "note": "Exact other-provider variant with a paid click; physioshinephysiorehab.com identifies Physio Shine Physio Rehab in LB Nagar, Hyderabad. Existing PhysioShine EXACT rules do not cover this spaced LB Nagar variant; preserve generic physiotherapy intent."
+    },
+    {
+      "term": "srinidhi physiotherapy and rehabilitation hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named-provider query with a paid click; srinidhiphysiotherapy.com and Practo identify Srinidhi Physiotherapy & Rehabilitation Centre in Pragathi Nagar, Hyderabad. Exclude only this branded query; preserve generic physiotherapy intent."
+    },
+    {
+      "term": "aqua therapy mumbai",
+      "matchType": "EXACT",
+      "note": "Exact geo-mismatched query with a paid click; targets aqua therapy in Mumbai, far outside Sthira's Hyderabad service area. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "praanaa pain clinic reviews",
+      "matchType": "EXACT",
+      "note": "Exact other-provider reviews variant; praanaapainclinic.com and Practo identify Praanaa Pain Clinic in Attapur, Hyderabad. Existing Praanaa EXACT rules do not cover this reviews variant; preserve generic pain-clinic intent."
+    },
+    {
+      "term": "prasanna pain clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; branded Prasanna pain-clinic intent is unrelated to Sthira's generic physio service. Preserve generic pain-management intent."
+    },
+    {
+      "term": "panacea physiotherapy and fitness clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query seen on two days; panaceaphysiyofit.com and Practo identify Panacea Physiotherapy & Fitness Clinic in Hydernagar/Miyapur, Hyderabad. Exclude only this branded query; preserve generic physiotherapy intent."
+    },
+    {
+      "term": "dr aparna's physiotherapy clinic vanasthalipuram",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; branded Dr Aparna's clinic intent in Vanasthalipuram is unrelated to Sthira. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "dr vijay bhaskar pain specialist",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; person-branded pain-specialist intent is unrelated to Sthira's service. Preserve generic pain-management intent."
+    },
+    {
+      "term": "dr posani pain clinic",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; person-branded pain-clinic intent is unrelated to Sthira's service. Preserve generic pain-management intent."
+    },
+    {
+      "term": "lively align physiotherapy clinic",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; branded Lively Align clinic intent is unrelated to Sthira. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "swatantra institute of physiotherapy and rehabilitation",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; branded Swatantra institute intent is unrelated to Sthira. Preserve generic physiotherapy and rehabilitation intent."
+    },
+    {
+      "term": "centre for spine and sports health hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query from live search terms; branded Centre for Spine and Sports Health intent is unrelated to Sthira. Preserve generic spine, sports and physiotherapy intent."
+    },
+    {
+      "term": "researchayu knee expert clinic near me",
+      "matchType": "EXACT",
+      "note": "Exact named other-provider query seen twice in live search terms; branded Researchayu knee-expert clinic intent is unrelated to Sthira. Preserve generic knee and near-me intent."
+    },
+    {
+      "term": "spine pro physio clinic",
+      "matchType": "EXACT",
+      "note": "Exact other-provider spaced-brand variant; spinepro.in identifies SPINEPRO Physio Clinic in Hyderabad. Existing SpinePro EXACT rules do not cover this spaced variant; preserve generic spine-physio intent."
+    },
+    {
+      "term": "spine reset chiropractic & physio wellness centre hyderabad",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant; existing Spine Reset EXACT rules do not cover this ampersand-plus-city variant. Preserve generic chiropractic, physiotherapy and Hyderabad intent."
+    },
+    {
+      "term": "kaira integrated hospital chiropractic & physiotherapist in nallagandla",
+      "matchType": "EXACT",
+      "note": "Exact named local-competitor query from live search terms; branded Kaira Integrated Hospital intent in Nallagandla is unrelated to Sthira. Preserve generic physiotherapy and Nallagandla service intent."
+    },
+    {
+      "term": "shanti physiotherapy kokapet",
+      "matchType": "EXACT",
+      "note": "Exact named local-competitor query from live search terms; branded Shanti Physiotherapy intent in Kokapet is unrelated to Sthira. Preserve generic physiotherapy and Kokapet intent."
+    },
+    {
+      "term": "physiotherapy in kims hospital",
+      "matchType": "EXACT",
+      "note": "Exact named hospital-brand query from live search terms; KIMS-branded physiotherapy intent is unrelated to Sthira's generic service, consistent with the existing KIMS EXACT rule. Preserve generic hospital and physiotherapy intent."
+    },
+    {
+      "term": "vinay physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact person-branded other-provider query from live search terms; intent targets a specific physiotherapist named Vinay, unrelated to Sthira. Preserve generic physiotherapist intent."
+    },
+    {
+      "term": "yamini physiotherapist",
+      "matchType": "EXACT",
+      "note": "Exact person-branded other-provider query from live search terms; intent targets a specific physiotherapist named Yamini, unrelated to Sthira. Preserve generic physiotherapist intent."
+    },
+    {
+      "term": "physiotherapy kolkata",
+      "matchType": "EXACT",
+      "note": "Exact geo-mismatched query from live search terms; Kolkata is far outside Sthira's Hyderabad catchment. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "lady physiotherapist in guntur",
+      "matchType": "EXACT",
+      "note": "Exact geo-mismatched query from live search terms; Guntur is far outside Sthira's Hyderabad catchment. Preserve generic women's physiotherapy intent."
+    },
+    {
+      "term": "shamli physiotherapy",
+      "matchType": "EXACT",
+      "note": "Exact geo-mismatched query from live search terms; Shamli is far outside Sthira's Hyderabad catchment. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "apollo physiotherapy at home",
+      "matchType": "EXACT",
+      "note": "Exact other-provider brand variant from live search terms; Apollo physiotherapy at home is Apollo Hospitals' branded home-care service. Existing Apollo EXACT rules do not cover this at-home variant; preserve generic home-physiotherapy intent."
     }
   ],
   "watchOnlyTerms": [
@@ -907,7 +1032,8 @@
     "ift physiotherapy",
     "pediatric physiotherapist",
     "bone setting",
-    "posture corrector"
+    "posture corrector",
+    "physiotherapy video call"
   ],
   "approvalRequiredFor": [
     "budget_increase",
@@ -1048,6 +1174,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-11-05T20:10:50.122697Z"
+    "reviewedAt": "2026-11-15T19:51:52.652180Z"
   }
 }
