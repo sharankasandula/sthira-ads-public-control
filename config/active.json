@@ -1010,6 +1010,36 @@
       "term": "apollo physiotherapy at home",
       "matchType": "EXACT",
       "note": "Exact other-provider brand variant from live search terms; Apollo physiotherapy at home is Apollo Hospitals' branded home-care service. Existing Apollo EXACT rules do not cover this at-home variant; preserve generic home-physiotherapy intent."
+    },
+    {
+      "term": "bright life physio point",
+      "matchType": "EXACT",
+      "note": "Named provider brand query: BrightLife Physio Point is a physiotherapy, sports rehab and chiropractic clinic in Madhapur/Hitech City (brightlifephysio.com, KiViHealth). Observed 2026-11-16 with zero spend; searcher wants that clinic, not Sthira."
+    },
+    {
+      "term": "physiogenix",
+      "matchType": "PHRASE",
+      "note": "Named provider brand class: PhysioGenix is a multi-location physiotherapy chain in Miyapur, Chandanagar, Madinaguda and Nallagandla (Practo and Justdial listings). Observed 2026-11-16 via physiogenix reviews; brand queries seek that provider, never Sthira."
+    },
+    {
+      "term": "sri pranava physiotherap and orthopedic clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Named provider query: Sri Pranava Orthopaedic & Physiotherapy Clinic in Amberpet/Ramanthapur (KiViHealth, Lybrate, Justdial). Observed 2026-11-16 with zero spend; unrelated East-Hyderabad provider brand search."
+    },
+    {
+      "term": "reborn physiocare",
+      "matchType": "PHRASE",
+      "note": "Named provider brand class: Reborn Physiocare by Dr Shyam K in Kukatpally/BHEL/Ramachandrapuram (rebornphysiocare.com). Observed 2026-11-16 inside an address query exceeding the 80-character 10-word rule limit, so this evidenced brand stem is queued instead of the long exact query."
+    },
+    {
+      "term": "lifecare advanced physiotherapy & chiropractic clinic",
+      "matchType": "EXACT",
+      "note": "Named provider query: Lifecare Advanced Physiotherapy & Chiropractic Clinic in Medipally/Sankar Nagar (verified magicpin listing; sibling Life Care clinic in Boduppal). Observed 2026-11-13 with zero spend; unrelated East-Hyderabad provider."
+    },
+    {
+      "term": "spinepro physio clinic gachibowli",
+      "matchType": "EXACT",
+      "note": "Unspaced variant of the already-excluded SpinePro Physio Clinic Gachibowli provider; existing rules cover only the spaced spine pro form and other variants. Observed 2026-11-12 with zero spend; same unrelated provider intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1174,6 +1204,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-11-16T03:45:57.088359Z"
+    "reviewedAt": "2026-11-17T03:45:58.015517Z"
   }
 }
