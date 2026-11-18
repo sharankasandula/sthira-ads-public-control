@@ -1040,6 +1040,26 @@
       "term": "spinepro physio clinic gachibowli",
       "matchType": "EXACT",
       "note": "Unspaced variant of the already-excluded SpinePro Physio Clinic Gachibowli provider; existing rules cover only the spaced spine pro form and other variants. Observed 2026-11-12 with zero spend; same unrelated provider intent."
+    },
+    {
+      "term": "aig hospital physiotherapy",
+      "matchType": "EXACT",
+      "note": "Named hospital-brand query: AIG Hospitals operates a Physiotherapy & Wellness department at its Gachibowli, Hyderabad campus (aighospitals.com). Observed 2026-11-17 with zero spend; searcher wants AIG's in-hospital physiotherapy, not Sthira. Preserve generic physiotherapy and hospital intent."
+    },
+    {
+      "term": "sparsh physiotherapy and rehabilitation clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Named provider query: Sparsh Physiotherapy and Rehabilitation Clinic operates at Hill County, Nizampet, Hyderabad (sparshaphysiotherapy.com). Observed 2026-11-17 with zero spend; unrelated Nizampet provider brand search. Preserve generic physiotherapy and rehabilitation intent."
+    },
+    {
+      "term": "sri raghava's physio clinic reviews",
+      "matchType": "EXACT",
+      "note": "Named provider reviews query: Sri Raghava's Physio Clinic in Jubilee Hills, Hyderabad (sriraghava.com, Practo). Observed 2026-11-17 with zero spend; brand-research intent targets that clinic, not Sthira. Preserve generic physiotherapy intent."
+    },
+    {
+      "term": "physio tattva near me",
+      "matchType": "EXACT",
+      "note": "Spaced near-me variant of the already-excluded PhysioTattva provider brand; the existing unspaced physiotattva PHRASE does not match this spaced form. Observed 2026-11-17 with zero spend; same unrelated provider intent. Preserve generic near-me physiotherapy intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1204,6 +1224,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-11-17T03:45:58.015517Z"
+    "reviewedAt": "2026-11-18T03:45:58.496016Z"
   }
 }
