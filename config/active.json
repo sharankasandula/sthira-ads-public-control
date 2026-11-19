@@ -1060,6 +1060,26 @@
       "term": "physio tattva near me",
       "matchType": "EXACT",
       "note": "Spaced near-me variant of the already-excluded PhysioTattva provider brand; the existing unspaced physiotattva PHRASE does not match this spaced form. Observed 2026-11-17 with zero spend; same unrelated provider intent. Preserve generic near-me physiotherapy intent."
+    },
+    {
+      "term": "activelife physiotherapy",
+      "matchType": "PHRASE",
+      "note": "Named provider brand stem: Active Life Physiotherapy (unspaced form) in KPHB, Hyderabad, per the drkiranactivelife public profile and Justdial listing. The observed paid query on 2026-11-12 (17.76 INR, 1 click) was a full postal-address search exceeding the 80-character 10-word rule limit, so this evidenced brand stem is queued instead of the long exact query. Existing active life EXACT rules do not match the unspaced form; preserve generic physiotherapy and KPHB locality intent."
+    },
+    {
+      "term": "continental hospital physiotherapy",
+      "matchType": "EXACT",
+      "note": "Named hospital-brand query: Continental Hospitals runs a Physiotherapy & Rehabilitation department at its Financial District/Gachibowli campus (continentalhospitals.com/en/specialities/physiotherapy). Observed 2026-11-18 with zero spend; searcher wants that hospital's in-house department, not Sthira. Preserve generic physiotherapy and Gachibowli locality intent."
+    },
+    {
+      "term": "jaya physio madhapur",
+      "matchType": "EXACT",
+      "note": "Named provider location variant: Jaya Physio Clinics operates at Kavuri Hills, Madhapur, Hyderabad (jayaphysioclinics.in, Practo). Existing 'jaya physiotherapy clinic madhapur' and 'jaya clinic madhapur' EXACT rules do not cover this physio variant. Observed 2026-11-18 with zero spend; same unrelated provider intent. Preserve generic physiotherapy and Madhapur locality intent."
+    },
+    {
+      "term": "be well physiotherapy and chiropractic clinic hyderabad",
+      "matchType": "EXACT",
+      "note": "Named provider query: Be Well Physiotherapy and Chiropractic Clinic operates in AS Rao Nagar, Secunderabad, Hyderabad (bewellphysiotherapy.in). Existing shorter 'be well physiotherapy' EXACT does not cover this full-name variant. Observed 2026-11-18 with zero spend; brand intent targets that clinic, not Sthira. Preserve generic physiotherapy and chiropractic-service intent."
     }
   ],
   "watchOnlyTerms": [
@@ -1224,6 +1244,6 @@
   ],
   "negativeReview": {
     "owner": "spandana",
-    "reviewedAt": "2026-11-18T03:45:58.496016Z"
+    "reviewedAt": "2026-11-19T03:46:05.973013Z"
   }
 }
